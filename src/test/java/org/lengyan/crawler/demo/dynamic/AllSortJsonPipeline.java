@@ -3,13 +3,14 @@ package org.lengyan.crawler.demo.dynamic;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import org.lengyan.crawler.annotation.PipelineName;
 import org.lengyan.crawler.pipeline.JsonPipeline;
 import org.lengyan.crawler.request.HttpGetRequest;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.scheduler.SchedulerContext;
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 @PipelineName("allSortJsonPipeline")
 public class AllSortJsonPipeline extends JsonPipeline {
