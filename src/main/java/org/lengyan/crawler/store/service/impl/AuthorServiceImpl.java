@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service;
 public class AuthorServiceImpl implements IAuthorService{
 	
 	@Autowired
-	private GushiwenAuthorMapper userOrderMapper;
+	private GushiwenAuthorMapper authorMapper;
 	
 	public void saveAuthors(List<Author> gswAuthor) {
 		Integer size = CommonUtils.sizeOf(gswAuthor);
 		for (int i = 0; i < size; i++) {
 			Author author = gswAuthor.get(i);
-			Integer result = userOrderMapper.insertSelective(author);
+			Integer result = authorMapper.insertSelective(author);
 			System.out.println(result);
 		}
 	}

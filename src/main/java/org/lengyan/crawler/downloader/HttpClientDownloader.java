@@ -50,6 +50,7 @@ import org.lengyan.crawler.request.HttpPostRequest;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;
 import org.lengyan.crawler.spider.SpiderThreadLocal;
+import org.lengyan.crawler.utils.FileUtils;
 import org.lengyan.crawler.utils.UrlUtils;
 
 /**
@@ -192,6 +193,7 @@ public class HttpClientDownloader extends AbstractDownloader {
 					//String content = EntityUtils.toString(responseEntity, charset);
 					String content = getContent(raw, responseEntity.getContentLength(), charset);
 					resp.setContent(content);
+					FileUtils.writeFile(content, "F:\\home\\html\\gushiwen\\" + System.currentTimeMillis() + ".html", "utf-8");
 				}
 			} else {
 				//404，500等
@@ -209,6 +211,8 @@ public class HttpClientDownloader extends AbstractDownloader {
 			if(proxy != null) {
 				proxys.failure(proxy.getHostName(), proxy.getPort());
 			}
+			throw new DownloadException(e);
+		} catch (Exception e) {
 			throw new DownloadException(e);
 		} finally {
 			reqObj.releaseConnection();

@@ -38,7 +38,7 @@ public class Author implements HtmlBean{
 	private String authorDynasty;
 	
 	@Href
-	@HtmlField(cssPath=".cont .divimg a")
+	@HtmlField(cssPath=".cont p:first-of-type a")
 	private String authorUrl;
 	
 	private Date createTime;
