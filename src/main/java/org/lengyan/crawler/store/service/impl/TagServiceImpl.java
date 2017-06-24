@@ -24,5 +24,10 @@ public class TagServiceImpl implements ITagService {
 			System.out.println(result);
 		}
 	}
+
+	@Override
+	public List<Tag> selectAllTags() {
+		return tagMapper.selectAllTags();
+	}
 	
 }

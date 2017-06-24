@@ -1,13 +1,13 @@
 package org.lengyan.crawler.demo.dynamic;
 
 import org.apache.commons.lang3.StringUtils;
-
-import com.alibaba.fastjson.JSONObject;
 import org.lengyan.crawler.annotation.PipelineName;
 import org.lengyan.crawler.pipeline.JsonPipeline;
 import org.lengyan.crawler.request.HttpGetRequest;
 import org.lengyan.crawler.request.HttpRequest;
-import org.lengyan.crawler.scheduler.SchedulerContext;
+import org.lengyan.crawler.scheduler.DeriveSchedulerContext;
+
+import com.alibaba.fastjson.JSONObject;
 
 @PipelineName("productListJsonPipeline")
 public class ProductListJsonPipeline extends JsonPipeline {
@@ -27,7 +27,8 @@ public class ProductListJsonPipeline extends JsonPipeline {
 			} else {
 				nextUrl = currUrl + "&" + "page=" + nextPage;
 			}
-			SchedulerContext.into(currRequest.subRequest(nextUrl));
+//			SchedulerContext.into(currRequest.subRequest(nextUrl));
+			DeriveSchedulerContext.into(currRequest.subRequest(nextUrl));
 		}
 	}
 

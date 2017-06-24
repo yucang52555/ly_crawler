@@ -1,11 +1,10 @@
 package org.lengyan.crawler.demo.jd;
 
 import org.apache.commons.lang3.StringUtils;
-
 import org.lengyan.crawler.annotation.PipelineName;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.request.HttpRequest;
-import org.lengyan.crawler.scheduler.SchedulerContext;
+import org.lengyan.crawler.scheduler.DeriveSchedulerContext;
 
 @PipelineName("productListPipeline")
 public class ProductListPipeline implements Pipeline<ProductList> {
@@ -25,7 +24,7 @@ public class ProductListPipeline implements Pipeline<ProductList> {
 			} else {
 				nextUrl = currUrl + "&" + "page=" + nextPage;
 			}
-			SchedulerContext.into(currRequest.subRequest(nextUrl));
+			DeriveSchedulerContext.into(currRequest.subRequest(nextUrl));
 		}
 	}
 

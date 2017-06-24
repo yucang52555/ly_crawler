@@ -7,7 +7,7 @@ import org.lengyan.crawler.annotation.PipelineName;
 import org.lengyan.crawler.pipeline.JsonPipeline;
 import org.lengyan.crawler.request.HttpGetRequest;
 import org.lengyan.crawler.request.HttpRequest;
-import org.lengyan.crawler.scheduler.SchedulerContext;
+import org.lengyan.crawler.scheduler.DeriveSchedulerContext;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -37,7 +37,8 @@ public class AllSortJsonPipeline extends JsonPipeline {
 			JSONArray hrefs = category.getJSONArray("categorys");
 			for(int j = 0; j < hrefs.size(); j++) {
 				String url = hrefs.getJSONObject(j).getString("url")+"&delivery=1&page=1&JL=4_10_0&go=0";
-				SchedulerContext.into(currRequest.subRequest(url));
+//				SchedulerContext.into(currRequest.subRequest(url));
+				DeriveSchedulerContext.into(currRequest.subRequest(url));
 			}
 		}
 	}

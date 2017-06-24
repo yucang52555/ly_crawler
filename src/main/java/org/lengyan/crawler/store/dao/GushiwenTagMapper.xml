@@ -92,4 +92,9 @@
 		update_time = #{updateTime,jdbcType=TIMESTAMP}
 		where id = #{id,jdbcType=BIGINT}
 	</update>
+	<select id="selectAllTags" resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List" />
+		from T_GUSHIWEN_TAG
+	</select>
 </mapper>

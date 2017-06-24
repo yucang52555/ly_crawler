@@ -20,7 +20,7 @@ public class JdPricesFieldRender implements CustomFieldRender {
 
 	@Override
 	public void render(HttpRequest request, HttpResponse response, BeanMap beanMap, SpiderBean bean, Field field) {
-		ProductList jd = (ProductList)bean;
+//		ProductList jd = (ProductList)bean;
 		StringBuffer sb = new StringBuffer();
 		/*for(String code : jd.getCodes()) {
 			sb.append("J_").append(code).append(",");

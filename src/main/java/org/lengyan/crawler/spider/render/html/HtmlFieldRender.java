@@ -14,7 +14,6 @@ import org.lengyan.crawler.response.HttpResponse;
 import org.lengyan.crawler.spider.SpiderBean;
 import org.lengyan.crawler.spider.render.FieldRender;
 import org.lengyan.crawler.spider.render.FieldRenderException;
-import org.lengyan.crawler.utils.FileUtils;
 import org.lengyan.crawler.utils.ReflectUtils;
 import org.reflections.ReflectionUtils;
 

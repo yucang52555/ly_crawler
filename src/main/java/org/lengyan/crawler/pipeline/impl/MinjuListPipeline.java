@@ -1,34 +1,35 @@
-package org.lengyan.crawler.demo.poetry;
+package org.lengyan.crawler.pipeline.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.lengyan.crawler.annotation.PipelineName;
+import org.lengyan.crawler.demo.poetry.GSWMinju;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.scheduler.DeriveSchedulerContext;
-import org.lengyan.crawler.store.service.IAuthorService;
-import org.lengyan.crawler.store.service.impl.AuthorServiceImpl;
+import org.lengyan.crawler.store.service.IMinjuService;
+import org.lengyan.crawler.store.service.impl.MinjuServiceImpl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alibaba.fastjson.JSON;
 
-@PipelineName("authorListPipeline")
-public class AuthorListPipeline implements Pipeline<GSWAuthor> {
+@PipelineName("minjuListPipeline")
+public class MinjuListPipeline implements Pipeline<GSWMinju> {
 	
 	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:init-data.xml");
 
 	@Override
-	public void process(GSWAuthor gswAuthors) {
-		System.out.println(JSON.toJSONString(gswAuthors));
+	public void process(GSWMinju gswMinjus) {
+		System.out.println(JSON.toJSONString(gswMinjus));
 		//保存到数据库
 		context.start();
-		IAuthorService authorService = (AuthorServiceImpl)context.getBean("authorService");
-		authorService.saveAuthors(gswAuthors.getAuthors());
+		IMinjuService minjuService = (MinjuServiceImpl)context.getBean("minjuService");
+		minjuService.saveMinjus(gswMinjus.getMinjus());
 		
-		HttpRequest currRequest = gswAuthors.getRequest();
+		HttpRequest currRequest = gswMinjus.getRequest();
 		//下一页继续抓取
-		int currPage = gswAuthors.getPage();
+		int currPage = gswMinjus.getPage();
 		int nextPage = currPage + 1;
-		int totalPage = 316;
+		int totalPage = 115;
 		if(nextPage <= totalPage) {
 			String nextUrl = "";
 			String currUrl = currRequest.getUrl();

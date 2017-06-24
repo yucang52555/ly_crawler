@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lengyan.crawler.store.dao.GushiwenPoetryMapper">
+	<resultMap id="BaseResultMap" type="org.lengyan.crawler.store.model.po.Poetry">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="poetry_name" property="poetryName" jdbcType="VARCHAR" />
+		<result column="poetry_url" property="poetryUrl" jdbcType="VARCHAR" />
+		<result column="dynasty" property="dynasty" jdbcType="VARCHAR" />
+		<result column="author" property="author" jdbcType="VARCHAR" />
+		<result column="author_id" property="authorId" jdbcType="BIGINT" />
+		<result column="poetry_content" property="poetryContent" jdbcType="VARCHAR" />
+		<result column="point_number" property="pointNumber" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, poetry_name, poetry_url, dynasty, author, author_id, poetry_content,
+		point_number, create_time, update_time
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+			<include refid="Base_Column_List" />
+		from 
+			T_GUSHIWEN_POETRY
+		where 
+			id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from T_GUSHIWEN_POETRY where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="org.lengyan.crawler.store.model.po.Poetry">
+		insert into T_GUSHIWEN_POETRY (
+			id, poetry_name, poetry_url, dynasty, author, author_id,
+			poetry_content, point_number, create_time, update_time
+		)
+		values (
+			#{id,jdbcType=BIGINT}, #{poetryName,jdbcType=VARCHAR}, #{poetryUrl,jdbcType=VARCHAR},
+			#{dynasty,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, #{authorId,jdbcType=BIGINT},
+			#{poetryContent,jdbcType=VARCHAR}, #{pointNumber,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+			#{updateTime,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="org.lengyan.crawler.store.model.po.Poetry">
+		insert into T_GUSHIWEN_POETRY
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="poetryName != null">
+				poetry_name,
+			</if>
+			<if test="poetryUrl != null">
+				poetry_url,
+			</if>
+			<if test="dynasty != null">
+				dynasty,
+			</if>
+			<if test="author != null">
+				author,
+			</if>
+			<if test="authorId != null">
+				author_id,
+			</if>
+			<if test="poetryContent != null">
+				poetry_content,
+			</if>
+			<if test="pointNumber != null">
+				point_number,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="poetryName != null">
+				#{poetryName,jdbcType=VARCHAR},
+			</if>
+			<if test="poetryUrl != null">
+				#{poetryUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="dynasty != null">
+				#{dynasty,jdbcType=VARCHAR},
+			</if>
+			<if test="author != null">
+				#{author,jdbcType=VARCHAR},
+			</if>
+			<if test="authorId != null">
+				#{authorId,jdbcType=BIGINT},
+			</if>
+			<if test="poetryContent != null">
+				#{poetryContent,jdbcType=VARCHAR},
+			</if>
+			<if test="pointNumber != null">
+				#{pointNumber,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.lengyan.crawler.store.model.po.Poetry">
+		update T_GUSHIWEN_POETRY
+		<set>
+			<if test="poetryName != null">
+				poetry_name = #{poetryName,jdbcType=VARCHAR},
+			</if>
+			<if test="poetryUrl != null">
+				poetry_url = #{poetryUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="dynasty != null">
+				dynasty = #{dynasty,jdbcType=VARCHAR},
+			</if>
+			<if test="author != null">
+				author = #{author,jdbcType=VARCHAR},
+			</if>
+			<if test="authorId != null">
+				author_id = #{authorId,jdbcType=BIGINT},
+			</if>
+			<if test="poetryContent != null">
+				poetry_content = #{poetryContent,jdbcType=VARCHAR},
+			</if>
+			<if test="pointNumber != null">
+				point_number = #{pointNumber,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.lengyan.crawler.store.model.po.Poetry">
+		update 
+			T_GUSHIWEN_POETRY
+		set 
+			poetry_name = #{poetryName,jdbcType=VARCHAR},
+			poetry_url = #{poetryUrl,jdbcType=VARCHAR},
+			dynasty = #{dynasty,jdbcType=VARCHAR},
+			author = #{author,jdbcType=VARCHAR},
+			author_id = #{authorId,jdbcType=BIGINT},
+			poetry_content = #{poetryContent,jdbcType=VARCHAR},
+			point_number = #{pointNumber,jdbcType=INTEGER},
+			create_time = #{createTime,jdbcType=TIMESTAMP},
+			update_time = #{updateTime,jdbcType=TIMESTAMP}
+		where 
+			id = #{id,jdbcType=BIGINT}
+	</update>
+</mapper>

@@ -1,5 +1,7 @@
 package org.lengyan.crawler.store.dao;
 
+import java.util.List;
+
 import org.lengyan.crawler.store.model.po.Tag;
 
 public interface GushiwenTagMapper {
@@ -14,4 +16,6 @@ public interface GushiwenTagMapper {
     int updateByPrimaryKeySelective(Tag record);
 
     int updateByPrimaryKey(Tag record);
+
+	List<Tag> selectAllTags();
 }

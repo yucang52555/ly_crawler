@@ -1,6 +1,7 @@
-package org.lengyan.crawler.demo.poetry;
+package org.lengyan.crawler.pipeline.impl;
 
 import org.lengyan.crawler.annotation.PipelineName;
+import org.lengyan.crawler.demo.poetry.GSWTag;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.store.service.ITagService;
 import org.lengyan.crawler.store.service.impl.TagServiceImpl;

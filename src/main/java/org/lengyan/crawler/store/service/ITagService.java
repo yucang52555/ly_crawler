@@ -12,10 +12,17 @@ import org.lengyan.crawler.store.model.po.Tag;
 public interface ITagService {
 	
 	/**
-	 * 保存作者信息
+	 * 保存标签信息
 	 * @param GSWAuthor
 	 * @return
 	 */
 	public void saveTags(List<Tag> GSWTags);
+	
+	/**
+	 * 查询标签列表
+	 * @param GSWAuthor
+	 * @return
+	 */
+	public List<Tag> selectAllTags();
 	
 }
