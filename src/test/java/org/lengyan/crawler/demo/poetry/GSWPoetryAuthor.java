@@ -1,7 +1,6 @@
 package org.lengyan.crawler.demo.poetry;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
 
 import org.lengyan.crawler.GeccoEngine;
@@ -19,11 +18,11 @@ import org.lengyan.crawler.store.model.po.Poetry;
  * @author kangtiancheng
  * @date 2017年6月20日
  */
-@Gecco(matchUrl="http://so.gushiwen.org/type.aspx?p={page}&t={tag}", pipelines={"poetryListPipeline"})
-public class GSWPoetry implements HtmlBean{
+@Gecco(matchUrl="http://so.gushiwen.org/authors/authorsw_{authorId}A{page}.aspx", pipelines={"authorPoetryListPipeline"})
+public class GSWPoetryAuthor implements HtmlBean{
 
-	private static final long serialVersionUID = -5393179128629256424L;
-	
+	private static final long serialVersionUID = 3272910350864796373L;
+
 	@Request
 	private HttpRequest request;
 	
@@ -31,7 +30,7 @@ public class GSWPoetry implements HtmlBean{
 	private Integer page;
 	
 	@RequestParameter
-	private String tag;
+	private Integer authorId;
 	
 	@HtmlField(cssPath=".main3 .left .sons")
 	private List<Poetry> poetrys;
@@ -60,18 +59,16 @@ public class GSWPoetry implements HtmlBean{
 		this.request = request;
 	}
 	
-	public String getTag() {
-		return tag;
+	public Integer getAuthorId() {
+		return authorId;
 	}
-	
-	public void setTag(String tag) {
-		this.tag = tag;
+
+	public void setAuthorId(Integer authorId) {
+		this.authorId = authorId;
 	}
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		String requestEncodeKey = URLEncoder.encode("早春","UTF-8");
-		System.out.println(requestEncodeKey);
-		HttpGetRequest start = new HttpGetRequest("http://so.gushiwen.org/type.aspx?p=1&t=" + requestEncodeKey);
+		HttpGetRequest start = new HttpGetRequest("http://so.gushiwen.org/authors/authorsw_1A1.aspx");
 		start.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
 		start.addHeader("Accept-Encoding", "gzip, deflate, sdch");
 		start.addHeader("Accept-Language", "zh-CN,zh;q=0.8");
@@ -79,7 +76,7 @@ public class GSWPoetry implements HtmlBean{
 		start.addHeader("Connection", "keep-alive");
 		start.addHeader("Host", "so.gushiwen.org");
 		start.addHeader("Pragma", "no-cache");
-		start.addHeader("Referer", "http://so.gushiwen.org/type.aspx?p=1&t=" + requestEncodeKey);
+		start.addHeader("Referer", "http://so.gushiwen.org/authors/authorsw_1A1.aspx");
 		start.addHeader("Upgrade-Insecure-Requests", "1");
 		start.addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
 		

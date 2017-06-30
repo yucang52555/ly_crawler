@@ -19,8 +19,12 @@ public class PoetryServiceImpl implements IPoetryService{
 		Integer size = CommonUtils.sizeOf(gswPoetry);
 		for (int i = 0; i < size; i++) {
 			Poetry poetry = gswPoetry.get(i);
-			Integer result = poetryMapper.insertSelective(poetry);
-			System.out.println(result);
+			try {
+				Integer result = poetryMapper.insertSelective(poetry);
+				System.out.println(result);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
