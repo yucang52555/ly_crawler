@@ -1,6 +1,5 @@
 package org.lengyan.crawler.demo.poetry;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.lengyan.crawler.GeccoEngine;
@@ -12,16 +11,13 @@ import org.lengyan.crawler.request.HttpGetRequest;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.spider.HtmlBean;
 import org.lengyan.crawler.store.model.po.Poetry;
-import org.lengyan.crawler.store.service.ITagService;
-import org.lengyan.crawler.store.service.impl.TagServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 古诗文-诗词
  * @author kangtiancheng
  * @date 2017年6月20日
  */
-@Gecco(matchUrl="http://so.gushiwen.org/type.aspx?p={page}", pipelines={"poetryListPipeline"})
+@Gecco(matchUrl="http://so.gushiwen.org/type.aspx?p={page}&t={tag}", pipelines={"poetryListPipeline"})
 public class GSWPoetry implements HtmlBean{
 
 	private static final long serialVersionUID = -5393179128629256424L;
@@ -31,6 +27,9 @@ public class GSWPoetry implements HtmlBean{
 	
 	@RequestParameter
 	private Integer page;
+	
+	@RequestParameter
+	private String tag;
 	
 	@HtmlField(cssPath=".main3 .left .sons")
 	private List<Poetry> poetrys;
@@ -58,11 +57,17 @@ public class GSWPoetry implements HtmlBean{
 	public void setRequest(HttpRequest request) {
 		this.request = request;
 	}
+	
+	public String getTag() {
+		return tag;
+	}
+	
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
 
 	public static void main(String[] args) {
-		List<HttpRequest> requests = new ArrayList<HttpRequest>();
-		
-		HttpGetRequest start = new HttpGetRequest("http://so.gushiwen.org/type.aspx?p=1");
+		HttpGetRequest start = new HttpGetRequest("http://so.gushiwen.org/type.aspx?p=13&t=唐诗三百首");
 		start.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
 		start.addHeader("Accept-Encoding", "gzip, deflate, sdch");
 		start.addHeader("Accept-Language", "zh-CN,zh;q=0.8");
@@ -70,17 +75,21 @@ public class GSWPoetry implements HtmlBean{
 		start.addHeader("Connection", "keep-alive");
 		start.addHeader("Host", "so.gushiwen.org");
 		start.addHeader("Pragma", "no-cache");
-		start.addHeader("Referer", "http://so.gushiwen.org/type.aspx?p=2");
+		start.addHeader("Referer", "http://so.gushiwen.org/type.aspx?p=12&t=唐诗三百首");
 		start.addHeader("Upgrade-Insecure-Requests", "1");
 		start.addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36");
+		
 		start.addCookie("__cfduid", "d0a1a830bbdf6231cfd6cd5535db45a7c1497841525");
-		start.addCookie("ASP.NET_SessionId", "lr1daywv50cc231ml1f305jm");
-		requests.add(start);
+		start.addCookie("ASP.NET_SessionId", "pzwci3fazv3h03ulxkflespg");
+		start.addCookie("Hm_lvt_04660099568f561a75456483228a9516", "1498725778,1498790870");
+		start.addCookie("Hm_lpvt_04660099568f561a75456483228a9516", System.currentTimeMillis()/1000 + "");
 		
 		GeccoEngine.create()
 		.classpath("org.lengyan.crawler.demo.poetry.GSWPoetry")
-		.start(requests)
+		.start(start)
 		.interval(5000)
+		.proxy(true)
 		.run();
+		
 	}
 }

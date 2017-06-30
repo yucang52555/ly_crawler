@@ -101,16 +101,20 @@ public class Spider implements Runnable {
 					//获取SpiderBean的上下文：downloader,beforeDownloader,afterDownloader,render,pipelines
 					SpiderBeanContext context = getSpiderBeanContext();
 					response = download(context, request);
-					if(response.getStatus() == 200) {
-						//render
-						Render render = context.getRender();
-						
-						SpiderBean spiderBean = null;
-						spiderBean = render.inject(currSpiderBeanClass, request, response);
-						
-						//pipelines
-						pipelines(spiderBean, context);
-					} else if(response.getStatus() == 302 || response.getStatus() == 301){
+					if (response != null) {
+						if(response.getStatus() == 200) {
+							//render
+							Render render = context.getRender();
+							
+							SpiderBean spiderBean = null;
+							spiderBean = render.inject(currSpiderBeanClass, request, response);
+							
+							//pipelines
+							pipelines(spiderBean, context);
+						} else if(response.getStatus() == 302 || response.getStatus() == 301){
+							spiderScheduler.into(request.subRequest(response.getContent()));
+						}
+					} else {
 						spiderScheduler.into(request.subRequest(response.getContent()));
 					}
 				}
@@ -206,7 +210,17 @@ public class Spider implements Runnable {
 			if(before != null) {
 				before.process(request);
 			}
-			HttpResponse response = currDownloader.download(request, timeout);
+			int tryCount = 3;
+			int currentCount = 0;
+			HttpResponse response = null;
+			while(currentCount < tryCount){
+				try {
+					response = currDownloader.download(request, timeout);
+					currentCount = 3;
+				} catch (DownloadException e) {
+					currentCount++;
+				}
+			}
 			if(after != null) {
 				after.process(request, response);
 			}

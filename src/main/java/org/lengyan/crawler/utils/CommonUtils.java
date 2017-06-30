@@ -3,9 +3,9 @@ package org.lengyan.crawler.utils;
 import java.util.List;
 
 /**
- * 集合工具类
- * @author oycw
- *
+ * 公共工具类
+ * @author kangtiancheng
+ * @date 2017年6月28日
  */
 public class CommonUtils {
 	
