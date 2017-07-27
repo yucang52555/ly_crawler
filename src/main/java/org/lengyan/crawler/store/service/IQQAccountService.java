@@ -16,5 +16,7 @@ public interface IQQAccountService {
 	 * @param qqAccounts
 	 */
 	public void saveQQAccounts(List<QQAccount> qqAccounts);
+
+	public void updateQQAccount(QQAccount qqAccount);
 	
 }

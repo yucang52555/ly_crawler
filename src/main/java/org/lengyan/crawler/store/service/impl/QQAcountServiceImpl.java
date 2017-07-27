@@ -24,5 +24,11 @@ public class QQAcountServiceImpl implements IQQAccountService {
 			System.out.println(qqAccount.getQqAccount() + ":" + result);
 		}
 	}
+
+	@Override
+	public void updateQQAccount(QQAccount qqAccount) {
+		Integer result = qqAccountMapper.updateByPrimaryKeySelective(qqAccount);
+		System.out.println(qqAccount.getQqAccount() + ":" + result);
+	}
 	
 }

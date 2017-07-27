@@ -36,8 +36,9 @@ public class QqListPipeline implements Pipeline<GSWQqAccount> {
 		int totalPage = 7300;
 		int totalLetter = 10;
 		int nextLetter = firstLetter + 1;
-		if (CommonUtils.sizeOf(gswQqAccounts.getQqAccounts()) <= 0) {
+		if (CommonUtils.sizeOf(gswQqAccounts.getQqAccounts()) < 100) {
 			totalPage = 0;
+			nextPage = 1;
 		}
 		if(nextPage <= totalPage) {
 			nextUrl = StringUtils.replaceOnce(currUrl, "_" + firstLetter + "_" + currPage, "_" + firstLetter + "_" + nextPage);

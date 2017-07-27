@@ -160,9 +160,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="org.lengyan.crawler.store.model.po.QQAccount" >
     update T_TENCENT_QQACCOUNT
     <set >
-      <if test="qqAccount != null" >
+      <!-- <if test="qqAccount != null" >
         qq_account = #{qqAccount,jdbcType=VARCHAR},
-      </if>
+      </if> -->
       <if test="nickName != null" >
         nick_name = #{nickName,jdbcType=VARCHAR},
       </if>
@@ -209,7 +209,8 @@
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    <!-- where id = #{id,jdbcType=BIGINT} -->
+    where qq_account = #{qqAccount,jdbcType=VARCHAR},
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lengyan.crawler.store.model.po.QQAccount" >
     update T_TENCENT_QQACCOUNT
