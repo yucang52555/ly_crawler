@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lengyan.crawler.store.dao.GushiwenChapterMapper">
-	<resultMap id="BaseResultMap" type="org.lengyan.crawler.store.model.po.Chapter">
+	<resultMap id="BaseResultMap" type="org.lengyan.crawler.store.model.po.GushiwenChapter">
 		<id column="id" property="id" jdbcType="BIGINT" />
 		<result column="charpter_name" property="charpterName" jdbcType="VARCHAR" />
 		<result column="charpter_url" property="charpterUrl" jdbcType="VARCHAR" />
@@ -10,32 +10,47 @@
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
 		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
 	</resultMap>
+	
+	<resultMap id="ResultMapWithBLOBs" type="org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs" extends="BaseResultMap">
+		<result column="charpter_content" property="charpterContent" jdbcType="LONGVARBINARY" />
+		<result column="translate_content" property="translateContent" jdbcType="LONGVARBINARY" />
+	</resultMap>
+	
 	<sql id="Base_Column_List">
 		id, charpter_name, charpter_url, book_id, charpter_class, create_time, update_time
 	</sql>
-	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+	
+	<sql id="Blob_Column_List">
+		charpter_content, translate_content
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long">
 		select
-			<include refid="Base_Column_List" />
-		from 
-			T_GUSHIWEN_CHAPTER
-		where 
-			id = #{id,jdbcType=BIGINT}
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from t_gushiwen_chapter
+		where id = #{id,jdbcType=BIGINT}
 	</select>
+	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-		delete from T_GUSHIWEN_CHAPTER where id = #{id,jdbcType=BIGINT}
+		delete from t_gushiwen_chapter where id = #{id,jdbcType=BIGINT}
 	</delete>
-	<insert id="insert" parameterType="org.lengyan.crawler.store.model.po.Chapter">
-		insert into T_GUSHIWEN_CHAPTER (
-			id, charpter_name, charpter_url, book_id, charpter_class, create_time, update_time
+	
+	<insert id="insert" parameterType="org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs">
+		insert into t_gushiwen_chapter (
+			id, charpter_name, charpter_url, book_id, charpter_class, create_time,
+			update_time, charpter_content, translate_content
 		)
 		values (
 			#{id,jdbcType=BIGINT}, #{charpterName,jdbcType=VARCHAR}, #{charpterUrl,jdbcType=VARCHAR},
 			#{bookId,jdbcType=BIGINT}, #{charpterClass,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
-			#{updateTime,jdbcType=TIMESTAMP}
+			#{updateTime,jdbcType=TIMESTAMP}, #{charpterContent,jdbcType=LONGVARBINARY},
+			#{translateContent,jdbcType=LONGVARBINARY}
 		)
 	</insert>
-	<insert id="insertSelective" parameterType="org.lengyan.crawler.store.model.po.Chapter">
-		insert into T_GUSHIWEN_CHAPTER
+	<insert id="insertSelective" parameterType="org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs">
+		insert into t_gushiwen_chapter
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				id,
@@ -57,6 +72,12 @@
 			</if>
 			<if test="updateTime != null">
 				update_time,
+			</if>
+			<if test="charpterContent != null">
+				charpter_content,
+			</if>
+			<if test="translateContent != null">
+				translate_content,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -81,10 +102,16 @@
 			<if test="updateTime != null">
 				#{updateTime,jdbcType=TIMESTAMP},
 			</if>
+			<if test="charpterContent != null">
+				#{charpterContent,jdbcType=LONGVARBINARY},
+			</if>
+			<if test="translateContent != null">
+				#{translateContent,jdbcType=LONGVARBINARY},
+			</if>
 		</trim>
 	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="org.lengyan.crawler.store.model.po.Chapter">
-		update T_GUSHIWEN_CHAPTER
+	<update id="updateByPrimaryKeySelective" parameterType="org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs">
+		update t_gushiwen_chapter
 		<set>
 			<if test="charpterName != null">
 				charpter_name = #{charpterName,jdbcType=VARCHAR},
@@ -104,11 +131,33 @@
 			<if test="updateTime != null">
 				update_time = #{updateTime,jdbcType=TIMESTAMP},
 			</if>
+			<if test="charpterContent != null">
+				charpter_content = #{charpterContent,jdbcType=LONGVARBINARY},
+			</if>
+			<if test="translateContent != null">
+				translate_content = #{translateContent,jdbcType=LONGVARBINARY},
+			</if>
 		</set>
 		where id = #{id,jdbcType=BIGINT}
 	</update>
-	<update id="updateByPrimaryKey" parameterType="org.lengyan.crawler.store.model.po.Chapter">
-		update T_GUSHIWEN_CHAPTER
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs">
+		update 
+			t_gushiwen_chapter
+		set 
+			charpter_name = #{charpterName,jdbcType=VARCHAR},
+			charpter_url = #{charpterUrl,jdbcType=VARCHAR},
+			book_id = #{bookId,jdbcType=BIGINT},
+			charpter_class = #{charpterClass,jdbcType=VARCHAR},
+			create_time = #{createTime,jdbcType=TIMESTAMP},
+			update_time = #{updateTime,jdbcType=TIMESTAMP},
+			charpter_content = #{charpterContent,jdbcType=LONGVARBINARY},
+			translate_content = #{translateContent,jdbcType=LONGVARBINARY}
+		where 
+			id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.lengyan.crawler.store.model.po.GushiwenChapter">
+		update 
+			t_gushiwen_chapter
 		set 
 			charpter_name = #{charpterName,jdbcType=VARCHAR},
 			charpter_url = #{charpterUrl,jdbcType=VARCHAR},
@@ -116,6 +165,15 @@
 			charpter_class = #{charpterClass,jdbcType=VARCHAR},
 			create_time = #{createTime,jdbcType=TIMESTAMP},
 			update_time = #{updateTime,jdbcType=TIMESTAMP}
+		where 
+			id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<update id="updateChapterContent" parameterType="org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs">
+		update T_GUSHIWEN_CHAPTER
+		set 
+			charpter_content = #{charpterContent,jdbcType=LONGVARBINARY},
+			translate_content = #{translateContent,jdbcType=LONGVARBINARY}
 		where 
 			id = #{id,jdbcType=BIGINT}
 	</update>

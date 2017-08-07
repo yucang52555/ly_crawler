@@ -7,22 +7,17 @@ import org.lengyan.crawler.annotation.HtmlField;
 import org.lengyan.crawler.annotation.Text;
 import org.lengyan.crawler.spider.HtmlBean;
 
-/**
- * 古诗文-章节
- * @author kangtiancheng
- * @date 2017年7月25日
- */
-public class Chapter implements HtmlBean{
+public class GushiwenChapter implements HtmlBean{
 	
-    private static final long serialVersionUID = -3699057988733911465L;
+	private static final long serialVersionUID = -3699057988733911465L;
+	
+    private Long id;
 
-	private Long id;
-
-	@Text
+    @Text
 	@HtmlField(cssPath="a")
     private String charpterName;
 
-	@Href
+    @Href
 	@HtmlField(cssPath="a")
     private String charpterUrl;
 

@@ -1,25 +1,22 @@
 package org.lengyan.crawler.demo.poetry;
 
-import java.util.List;
-
 import org.lengyan.crawler.GeccoEngine;
 import org.lengyan.crawler.annotation.Gecco;
 import org.lengyan.crawler.annotation.HtmlField;
 import org.lengyan.crawler.annotation.Request;
 import org.lengyan.crawler.annotation.RequestParameter;
-import org.lengyan.crawler.annotation.Text;
 import org.lengyan.crawler.request.HttpGetRequest;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.spider.HtmlBean;
 import org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs;
 
 /**
- * 古诗文-章节
+ * 古诗文-章节内容
  * @author kangtiancheng
- * @date 2017年7月25日
+ * @date 2017年7月27日
  */
-@Gecco(matchUrl="http://so.gushiwen.org/guwen/book_{bookId}.aspx", pipelines={"charpterListPipeline"})
-public class GSWCharpter implements HtmlBean{
+@Gecco(matchUrl="http://so.gushiwen.org/guwen/bookv_{charpterId}.aspx", pipelines={"charpterContentListPipeline"})
+public class GSWCharpterContent implements HtmlBean{
 
 	private static final long serialVersionUID = 615120584365512002L;
 
@@ -27,29 +24,17 @@ public class GSWCharpter implements HtmlBean{
 	private HttpRequest request;
 	
 	@RequestParameter
-	private Integer bookId;
+	private Integer charpterId;
 	
-	@HtmlField(cssPath=".main3 .left .sons .bookcont span")
-	private List<GushiwenChapterWithBLOBs> chapters;
+	@HtmlField(cssPath=".main3")
+	private GushiwenChapterWithBLOBs chapter;
 	
-	@Text
-	@HtmlField(cssPath=".main3 .left .sons .bookcont .bookMl strong")
-    private String charpterClass;
-	
-	public Integer getBookId() {
-		return bookId;
+	public Integer getCharpterId() {
+		return charpterId;
 	}
-	
-	public void setBookId(Integer bookId) {
-		this.bookId = bookId;
-	}
-	
-	public List<GushiwenChapterWithBLOBs> getChapters() {
-		return chapters;
-	}
-	
-	public void setChapters(List<GushiwenChapterWithBLOBs> chapters) {
-		this.chapters = chapters;
+
+	public void setCharpterId(Integer charpterId) {
+		this.charpterId = charpterId;
 	}
 
 	public HttpRequest getRequest() {
@@ -60,16 +45,16 @@ public class GSWCharpter implements HtmlBean{
 		this.request = request;
 	}
 	
-	public String getCharpterClass() {
-		return charpterClass;
+	public GushiwenChapterWithBLOBs getChapter() {
+		return chapter;
 	}
 
-	public void setCharpterClass(String charpterClass) {
-		this.charpterClass = charpterClass;
+	public void setChapter(GushiwenChapterWithBLOBs chapter) {
+		this.chapter = chapter;
 	}
 
 	public static void main(String[] args) {
-		HttpGetRequest start = new HttpGetRequest("http://so.gushiwen.org/guwen/book_150.aspx");
+		HttpGetRequest start = new HttpGetRequest("http://so.gushiwen.org/guwen/bookv_5301.aspx");
 		start.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
 		start.addHeader("Accept-Encoding", "gzip, deflate, sdch");
 		start.addHeader("Accept-Language", "zh-CN,zh;q=0.8");
@@ -87,7 +72,7 @@ public class GSWCharpter implements HtmlBean{
 		start.addCookie("Hm_lpvt_04660099568f561a75456483228a9516", System.currentTimeMillis()/1000 + "");
 		
 		GeccoEngine.create()
-		.classpath("org.lengyan.crawler.demo.poetry.GSWCharpter")
+		.classpath("org.lengyan.crawler.demo.poetry.GSWCharpterContent")
 		.start(start)
 		.interval(5000)
 		.run();

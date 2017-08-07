@@ -1,6 +1,6 @@
 package org.lengyan.crawler.store.service;
 
-import org.lengyan.crawler.store.model.po.Chapter;
+import org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs;
 
 /**
  * 古诗文章节服务
@@ -14,6 +14,13 @@ public interface IChapterService {
 	 * @param GSWAuthor
 	 * @return
 	 */
-	public void saveChapter(Chapter chapter);
+	public void saveChapter(GushiwenChapterWithBLOBs chapter);
+
+	/**
+	 * 更新章节信息
+	 * @param chapter
+	 * @param charpterId
+	 */
+	public void updateChapter(GushiwenChapterWithBLOBs chapter);
 	
 }

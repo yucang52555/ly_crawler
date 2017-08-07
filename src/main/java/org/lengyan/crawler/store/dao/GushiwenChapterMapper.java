@@ -1,17 +1,22 @@
 package org.lengyan.crawler.store.dao;
 
-import org.lengyan.crawler.store.model.po.Chapter;
+import org.lengyan.crawler.store.model.po.GushiwenChapter;
+import org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs;
 
 public interface GushiwenChapterMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Chapter record);
+    int insert(GushiwenChapterWithBLOBs record);
 
-    int insertSelective(Chapter record);
+    int insertSelective(GushiwenChapterWithBLOBs record);
 
-    Chapter selectByPrimaryKey(Long id);
+    GushiwenChapterWithBLOBs selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Chapter record);
+    int updateByPrimaryKeySelective(GushiwenChapterWithBLOBs record);
 
-    int updateByPrimaryKey(Chapter record);
+    int updateByPrimaryKeyWithBLOBs(GushiwenChapterWithBLOBs record);
+
+    int updateByPrimaryKey(GushiwenChapter record);
+    
+    int updateChapterContent(GushiwenChapterWithBLOBs chapter);
 }

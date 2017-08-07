@@ -2,45 +2,42 @@ package org.lengyan.crawler.pipeline.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.lengyan.crawler.annotation.PipelineName;
-import org.lengyan.crawler.demo.poetry.GSWCharpter;
+import org.lengyan.crawler.demo.poetry.GSWCharpterContent;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.scheduler.DeriveSchedulerContext;
 import org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs;
 import org.lengyan.crawler.store.service.IChapterService;
 import org.lengyan.crawler.store.service.impl.ChapterServiceImpl;
-import org.lengyan.crawler.utils.CommonUtils;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alibaba.fastjson.JSON;
 
-@PipelineName("charpterListPipeline")
-public class CharpterListPipeline implements Pipeline<GSWCharpter> {
+@PipelineName("charpterContentListPipeline")
+public class CharpterContentListPipeline implements Pipeline<GSWCharpterContent> {
 	
 	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:init-data.xml");
 
 	@Override
-	public void process(GSWCharpter gswCharpter) {
-		System.out.println(JSON.toJSONString(gswCharpter));
+	public void process(GSWCharpterContent charpterContent) {
+		System.out.println(JSON.toJSONString(charpterContent));
 		//保存章节到数据库
 		context.start();
 		IChapterService chapterService = (ChapterServiceImpl)context.getBean("chapterService");
-		//循环拼装数据
-		Integer csize = CommonUtils.sizeOf(gswCharpter.getChapters());
-		for (int j = 0; j < csize; j++) {
-			GushiwenChapterWithBLOBs chapter = gswCharpter.getChapters().get(j);
-			chapter.setBookId(Long.valueOf(gswCharpter.getBookId()));
-			chapter.setCharpterClass(gswCharpter.getCharpterClass());
-			chapterService.saveChapter(chapter);
-		}
+		GushiwenChapterWithBLOBs chapter = charpterContent.getChapter();
+//		System.out.println(chapter.getCharpterContent().length());
+//		System.out.println(chapter.getTranslateContent().length());
+		chapter.setId(Long.valueOf(charpterContent.getCharpterId()));
+		chapterService.updateChapter(charpterContent.getChapter());
 		
-		HttpRequest currRequest = gswCharpter.getRequest();
+		HttpRequest currRequest = charpterContent.getRequest();
 		//查询下一个抓取的url(数据库表t_gushiwen_chapter)
-		Integer totalBook = 163;
-		if(gswCharpter.getBookId() <= totalBook) {
+		Integer totalCharpter = 14142;
+		if(charpterContent.getCharpterId() <= totalCharpter) {
 			String nextUrl = "";
 			String currUrl = currRequest.getUrl();
-			nextUrl = StringUtils.replaceOnce(currUrl, "book_" + gswCharpter.getBookId() + ".aspx", "book_" + (gswCharpter.getBookId() + 1) + ".aspx");
+			nextUrl = StringUtils.replaceOnce(currUrl, "bookv_" + charpterContent.getCharpterId() + ".aspx", "bookv_" + (charpterContent.getCharpterId() + 1) + ".aspx");
+			System.out.println(nextUrl);
 			DeriveSchedulerContext.into(currRequest.subRequest(nextUrl));
 		}
 	}

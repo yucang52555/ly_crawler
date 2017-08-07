@@ -1,7 +1,7 @@
 package org.lengyan.crawler.store.service.impl;
 
 import org.lengyan.crawler.store.dao.GushiwenChapterMapper;
-import org.lengyan.crawler.store.model.po.Chapter;
+import org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs;
 import org.lengyan.crawler.store.service.IChapterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,12 @@ public class ChapterServiceImpl implements IChapterService {
 	private GushiwenChapterMapper chapterMapper;
 
 	@Override
-	public void saveChapter(Chapter chapter) {
+	public void saveChapter(GushiwenChapterWithBLOBs chapter) {
 		chapterMapper.insertSelective(chapter);
+	}
+
+	@Override
+	public void updateChapter(GushiwenChapterWithBLOBs chapter) {
+		chapterMapper.updateChapterContent(chapter);
 	}
 }

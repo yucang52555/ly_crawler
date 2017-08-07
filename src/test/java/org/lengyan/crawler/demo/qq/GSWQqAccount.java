@@ -69,7 +69,7 @@ public class GSWQqAccount implements HtmlBean{
 	}
 
 	public static void main(String[] args) {
-		HttpGetRequest start = new HttpGetRequest("http://qq.ico.la/list_8_1576");
+		HttpGetRequest start = new HttpGetRequest("http://qq.ico.la/list_1_1");
 		start.addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
 		start.addHeader("Accept-Encoding", "gzip, deflate, sdch");
 		start.addHeader("Accept-Language", "zh-CN,zh;q=0.8");
