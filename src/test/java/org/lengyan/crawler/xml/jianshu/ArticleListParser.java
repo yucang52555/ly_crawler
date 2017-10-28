@@ -8,9 +8,10 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.lengyan.crawler.annotation.xml.XmlField;
 import org.lengyan.crawler.spider.XmlBean;
+import org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuArticle;
 import org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuKeyword;
-import org.lengyan.crawler.store.service.IJianshuKeywordService;
-import org.lengyan.crawler.store.service.impl.JianshuKeywordServiceImpl;
+import org.lengyan.crawler.store.service.IJianshuArticleService;
+import org.lengyan.crawler.store.service.impl.JianshuArticleServiceImpl;
 import org.lengyan.crawler.utils.FileUtils;
 import org.lengyan.crawler.utils.PropertiesUtil;
 import org.lengyan.crawler.utils.xml.XMLParseUtil;
@@ -41,7 +42,7 @@ public class ArticleListParser implements XmlBean {
 		String headBaseImg = "http:";
 		//保存到数据库
 		context.start();
-		IJianshuKeywordService keywordService = (JianshuKeywordServiceImpl)context.getBean("jianshuKeywordService");
+		IJianshuArticleService jianshuArticleService = (JianshuArticleServiceImpl)context.getBean("jianshuArticleService");
 		
 		//1：循环获取文件列表
 		while (!FileUtils.isEmpty(new File(sourceFile))) {
@@ -51,32 +52,42 @@ public class ArticleListParser implements XmlBean {
 				//3：循环文件列表
 				for (File file : xmlFileList) {
 					try {
-						if (FileUtils.getFileName(file).startsWith("简书热搜关键词")) {
+						if (FileUtils.getFileName(file).startsWith("简书文章列表")) {
 							System.out.println(file.getAbsolutePath());
 							//读取文件
 							Document document = XMLParseUtil.getDocument(file);
 							Element rootElement = document.getRootElement();
 							List<Element> keyElements = rootElement.element("article").elements("item");
-//							List<Node> keyElements = document.selectNodes("//keyword/item");u
+//							List<Node> keyElements = document.selectNodes("//keyword/item");
 							for (Element element : keyElements) {
 								System.out.println(element.asXML());
-								String keyword = element.elementText("headimgurl");
-								JianshuKeyword jianshuKeyword = keywordService.selectJianshuKeyword(keyword);
-								if (jianshuKeyword == null) {
-									jianshuKeyword = new JianshuKeyword();
-									jianshuKeyword.setKeyword(keyword);
-									jianshuKeyword.setCollectTimes(1);
-									jianshuKeyword.setCreateTime(new Date());
-									jianshuKeyword.setKeywordUrl(baseUrl + element.elementText("keyurl"));
-									System.out.println(jianshuKeyword.toString());
-									keywordService.saveKeyword(jianshuKeyword);
+								JianshuArticle jianshuArticle = jianshuArticleService.selectArticleByUrl(element.elementText("articleurl"));
+								if (jianshuArticle != null) {
+									jianshuArticle.setUpdateTime(new Date());
+									jianshuArticle.setHeadimgUrl(headBaseImg.concat(element.elementText("headimgurl")));
+									jianshuArticle.setUserName(element.elementText("username"));
+									jianshuArticle.setUserUrl(baseUrl.concat(element.elementText("userurl")));
+									jianshuArticle.setTitle(element.elementText("title"));
+									jianshuArticle.setArticleUrl(baseUrl.concat(element.elementText("articleurl")));
+									jianshuArticle.setAbstractContent(element.elementText("abstract"));
+									jianshuArticle.setReadCount(Integer.parseInt(element.elementText("readcount")));
+									jianshuArticle.setCommentCount(Integer.parseInt(element.elementText("commentcount")));
+									jianshuArticle.setApproveCount(Integer.parseInt(element.elementText("approvecount")));
+									jianshuArticleService.updateArticle(jianshuArticle);
 								} else {
-									jianshuKeyword.setCollectTimes(jianshuKeyword.getCollectTimes() + 1);
-									jianshuKeyword.setUpdateTime(new Date());
-									keywordService.updateKeyword(jianshuKeyword);
+									jianshuArticle = new JianshuArticle();
+									jianshuArticle.setCreateTime(new Date());
+									jianshuArticle.setHeadimgUrl(headBaseImg.concat(element.elementText("headimgurl")));
+									jianshuArticle.setUserName(element.elementText("username"));
+									jianshuArticle.setUserUrl(baseUrl.concat(element.elementText("userurl")));
+									jianshuArticle.setTitle(element.elementText("title"));
+									jianshuArticle.setArticleUrl(baseUrl.concat(element.elementText("articleurl")));
+									jianshuArticle.setAbstractContent(element.elementText("abstract"));
+									jianshuArticle.setReadCount(Integer.parseInt(element.elementText("readcount").trim()));
+									jianshuArticle.setCommentCount(Integer.parseInt(element.elementText("commentcount").trim()));
+									jianshuArticle.setApproveCount(Integer.parseInt(element.elementText("approvecount").trim()));
+									jianshuArticleService.saveArticle(jianshuArticle);
 								}
-								jianshuKeyword = null;
-								keyword = null;
 							}
 							//文件迁移到备份文件夹
 							FileUtils.delFile(file.getAbsolutePath());
@@ -96,7 +107,6 @@ public class ArticleListParser implements XmlBean {
 							e1.printStackTrace();
 						}
 					}
-					
 				}
 				Thread.sleep(3*60*1000);
 			} catch (InterruptedException e) {

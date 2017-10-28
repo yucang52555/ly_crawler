@@ -22,7 +22,7 @@ public class JianshuArticle implements XmlBean {
     private String headimgUrl;//头像
 	
 	@XmlField(xPath="/username")
-    private String username;//用户名
+    private String userName;//用户名
 
 	@XmlField(xPath="/userurl")
     private String userUrl;//用户url
@@ -37,17 +37,21 @@ public class JianshuArticle implements XmlBean {
 	private String abstractContent;//内容摘要
 	
 	@XmlField(xPath="/readcount")
-	private Integer readcount;//阅读量
+	private Integer readCount;//阅读量
 	
 	@XmlField(xPath="/commentcount")
-	private Integer commentcount;//评论数
+	private Integer commentCount;//评论数
 	
 	@XmlField(xPath="/approvecount")
-	private Integer approvecount;//点赞数
+	private Integer approveCount;//点赞数
 
     private Date createTime;//创建时间
 
     private Date updateTime;//更新时间
+    
+    private Date articleCreateTime;
+
+    private String content;
     
 	public Long getId() {
 		return id;
@@ -56,7 +60,7 @@ public class JianshuArticle implements XmlBean {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
 	public String getHeadimgUrl() {
 		return headimgUrl;
 	}
@@ -65,18 +69,18 @@ public class JianshuArticle implements XmlBean {
 		this.headimgUrl = headimgUrl;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 	
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-
+	
 	public String getUserUrl() {
 		return userUrl;
 	}
-	
+
 	public void setUserUrl(String userUrl) {
 		this.userUrl = userUrl;
 	}
@@ -84,11 +88,11 @@ public class JianshuArticle implements XmlBean {
 	public String getTitle() {
 		return title;
 	}
-
+	
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	public String getArticleUrl() {
 		return articleUrl;
 	}
@@ -96,39 +100,39 @@ public class JianshuArticle implements XmlBean {
 	public void setArticleUrl(String articleUrl) {
 		this.articleUrl = articleUrl;
 	}
-	
+
 	public String getAbstractContent() {
 		return abstractContent;
 	}
-	
+
 	public void setAbstractContent(String abstractContent) {
 		this.abstractContent = abstractContent;
 	}
-
-	public Integer getReadcount() {
-		return readcount;
+	
+	public Integer getReadCount() {
+		return readCount;
 	}
 
-	public void setReadcount(Integer readcount) {
-		this.readcount = readcount;
+	public void setReadCount(Integer readCount) {
+		this.readCount = readCount;
+	}
+
+	public Integer getCommentCount() {
+		return commentCount;
+	}
+
+	public void setCommentCount(Integer commentCount) {
+		this.commentCount = commentCount;
 	}
 	
-	public Integer getCommentcount() {
-		return commentcount;
-	}
-	
-	public void setCommentcount(Integer commentcount) {
-		this.commentcount = commentcount;
-	}
-	
-	public Integer getApprovecount() {
-		return approvecount;
+	public Integer getApproveCount() {
+		return approveCount;
 	}
 
-	public void setApprovecount(Integer approvecount) {
-		this.approvecount = approvecount;
+	public void setApproveCount(Integer approveCount) {
+		this.approveCount = approveCount;
 	}
-
+	
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -136,13 +140,29 @@ public class JianshuArticle implements XmlBean {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
+	
 	public Date getUpdateTime() {
 		return updateTime;
 	}
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public Date getArticleCreateTime() {
+		return articleCreateTime;
+	}
+
+	public void setArticleCreateTime(Date articleCreateTime) {
+		this.articleCreateTime = articleCreateTime;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	@Override

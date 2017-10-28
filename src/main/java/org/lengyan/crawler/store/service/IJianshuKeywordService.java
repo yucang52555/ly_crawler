@@ -5,9 +5,9 @@ import java.util.List;
 import org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuKeyword;
 
 /**
- * 古诗文标签服务
+ * 简书关键词服务
  * @author kangtiancheng
- * @date 2017年6月20日
+ * @date 2017年10月28日
  */
 public interface IJianshuKeywordService {
 	
