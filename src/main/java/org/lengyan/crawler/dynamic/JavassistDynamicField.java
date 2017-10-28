@@ -2,18 +2,17 @@ package org.lengyan.crawler.dynamic;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import org.lengyan.crawler.annotation.Ajax;
-import org.lengyan.crawler.annotation.Attr;
-import org.lengyan.crawler.annotation.FieldRenderName;
-import org.lengyan.crawler.annotation.Href;
-import org.lengyan.crawler.annotation.Html;
-import org.lengyan.crawler.annotation.HtmlField;
-import org.lengyan.crawler.annotation.Image;
 import org.lengyan.crawler.annotation.JSONPath;
 import org.lengyan.crawler.annotation.Request;
 import org.lengyan.crawler.annotation.RequestParameter;
-import org.lengyan.crawler.annotation.Text;
+import org.lengyan.crawler.annotation.html.Ajax;
+import org.lengyan.crawler.annotation.html.Attr;
+import org.lengyan.crawler.annotation.html.FieldRenderName;
+import org.lengyan.crawler.annotation.html.Href;
+import org.lengyan.crawler.annotation.html.Html;
+import org.lengyan.crawler.annotation.html.HtmlField;
+import org.lengyan.crawler.annotation.html.Image;
+import org.lengyan.crawler.annotation.html.Text;
 
 import javassist.CtClass;
 import javassist.CtField;

@@ -2,10 +2,10 @@ package org.lengyan.crawler.monitor;
 
 import java.util.Set;
 
+import org.lengyan.crawler.annotation.MBean;
 import org.weakref.jmx.Managed;
 
 import com.alibaba.fastjson.JSON;
-import org.lengyan.crawler.annotation.MBean;
 
 /**
  * downloader相关的统计信息的mbean

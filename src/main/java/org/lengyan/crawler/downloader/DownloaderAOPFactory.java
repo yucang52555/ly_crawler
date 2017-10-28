@@ -4,9 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.reflections.Reflections;
-
 import org.lengyan.crawler.annotation.GeccoClass;
+import org.reflections.Reflections;
 
 public class DownloaderAOPFactory {
 	

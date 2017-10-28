@@ -14,12 +14,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
-
-import org.lengyan.crawler.annotation.Attr;
-import org.lengyan.crawler.annotation.Href;
-import org.lengyan.crawler.annotation.Html;
-import org.lengyan.crawler.annotation.Image;
-import org.lengyan.crawler.annotation.Text;
+import org.lengyan.crawler.annotation.html.Attr;
+import org.lengyan.crawler.annotation.html.Href;
+import org.lengyan.crawler.annotation.html.Html;
+import org.lengyan.crawler.annotation.html.Image;
+import org.lengyan.crawler.annotation.html.Text;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;
 import org.lengyan.crawler.spider.SpiderBean;

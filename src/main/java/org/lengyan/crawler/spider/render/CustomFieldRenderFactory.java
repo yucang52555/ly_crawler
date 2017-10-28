@@ -4,9 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.lengyan.crawler.annotation.html.FieldRenderName;
 import org.reflections.Reflections;
-
-import org.lengyan.crawler.annotation.FieldRenderName;
 
 public class CustomFieldRenderFactory {
 	

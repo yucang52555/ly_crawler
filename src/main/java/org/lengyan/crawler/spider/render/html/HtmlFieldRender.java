@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.lengyan.crawler.annotation.HtmlField;
+import org.lengyan.crawler.annotation.html.HtmlField;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;
 import org.lengyan.crawler.spider.SpiderBean;

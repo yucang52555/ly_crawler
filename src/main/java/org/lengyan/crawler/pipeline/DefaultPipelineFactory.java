@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.reflections.Reflections;
-
 import org.lengyan.crawler.annotation.PipelineName;
 import org.lengyan.crawler.spider.SpiderBean;
 

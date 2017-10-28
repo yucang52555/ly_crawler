@@ -1,6 +1,7 @@
 package org.lengyan.crawler.pipeline;
 
 import com.alibaba.fastjson.JSON;
+
 import org.lengyan.crawler.annotation.PipelineName;
 import org.lengyan.crawler.spider.SpiderBean;
 

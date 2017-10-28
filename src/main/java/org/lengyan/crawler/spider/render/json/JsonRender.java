@@ -2,6 +2,9 @@ package org.lengyan.crawler.spider.render.json;
 
 import net.sf.cglib.beans.BeanMap;
 
+import java.util.Map;
+
+import org.dom4j.Document;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;
 import org.lengyan.crawler.spider.SpiderBean;
@@ -25,6 +28,11 @@ public class JsonRender extends AbstractRender {
 	@Override
 	public void fieldRender(HttpRequest request, HttpResponse response, BeanMap beanMap, SpiderBean bean) {
 		jsonFieldRender.render(request, response, beanMap, bean);
+	}
+
+	@Override
+	public Map<String, Object> fieldRender(Document document, SpiderBean bean) {
+		return null;
 	}
 
 }

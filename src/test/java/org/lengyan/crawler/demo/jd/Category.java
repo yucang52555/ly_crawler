@@ -2,8 +2,8 @@ package org.lengyan.crawler.demo.jd;
 
 import java.util.List;
 
-import org.lengyan.crawler.annotation.HtmlField;
-import org.lengyan.crawler.annotation.Text;
+import org.lengyan.crawler.annotation.html.HtmlField;
+import org.lengyan.crawler.annotation.html.Text;
 import org.lengyan.crawler.spider.HrefBean;
 import org.lengyan.crawler.spider.HtmlBean;
 

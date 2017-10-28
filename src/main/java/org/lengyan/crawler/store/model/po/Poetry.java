@@ -3,10 +3,10 @@ package org.lengyan.crawler.store.model.po;
 import java.util.Date;
 import java.util.List;
 
-import org.lengyan.crawler.annotation.Href;
-import org.lengyan.crawler.annotation.Html;
-import org.lengyan.crawler.annotation.HtmlField;
-import org.lengyan.crawler.annotation.Text;
+import org.lengyan.crawler.annotation.html.Href;
+import org.lengyan.crawler.annotation.html.Html;
+import org.lengyan.crawler.annotation.html.HtmlField;
+import org.lengyan.crawler.annotation.html.Text;
 import org.lengyan.crawler.spider.HtmlBean;
 
 /**

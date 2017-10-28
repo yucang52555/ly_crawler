@@ -3,10 +3,9 @@ package org.lengyan.crawler.monitor;
 import java.lang.management.ManagementFactory;
 import java.util.Set;
 
+import org.lengyan.crawler.annotation.MBean;
 import org.reflections.Reflections;
 import org.weakref.jmx.MBeanExporter;
-
-import org.lengyan.crawler.annotation.MBean;
 
 public class GeccoJmx {
 	

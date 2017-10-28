@@ -1,11 +1,11 @@
 package org.lengyan.crawler.demo.jd;
 
-import org.lengyan.crawler.annotation.Ajax;
 import org.lengyan.crawler.annotation.Gecco;
-import org.lengyan.crawler.annotation.HtmlField;
-import org.lengyan.crawler.annotation.Image;
 import org.lengyan.crawler.annotation.RequestParameter;
-import org.lengyan.crawler.annotation.Text;
+import org.lengyan.crawler.annotation.html.Ajax;
+import org.lengyan.crawler.annotation.html.HtmlField;
+import org.lengyan.crawler.annotation.html.Image;
+import org.lengyan.crawler.annotation.html.Text;
 import org.lengyan.crawler.spider.HtmlBean;
 
 @Gecco(matchUrl="http://item.jd.com/{code}.html", pipelines="consolePipeline")

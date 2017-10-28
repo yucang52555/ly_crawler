@@ -2,8 +2,8 @@ package org.lengyan.crawler.store.model.po;
 
 import java.io.UnsupportedEncodingException;
 
-import org.lengyan.crawler.annotation.Html;
-import org.lengyan.crawler.annotation.HtmlField;
+import org.lengyan.crawler.annotation.html.Html;
+import org.lengyan.crawler.annotation.html.HtmlField;
 import org.lengyan.crawler.utils.ConvertUtils;
 
 public class GushiwenChapterWithBLOBs extends GushiwenChapter {

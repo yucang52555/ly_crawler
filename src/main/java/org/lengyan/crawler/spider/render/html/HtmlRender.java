@@ -2,6 +2,9 @@ package org.lengyan.crawler.spider.render.html;
 
 import net.sf.cglib.beans.BeanMap;
 
+import java.util.Map;
+
+import org.dom4j.Document;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;
 import org.lengyan.crawler.spider.SpiderBean;
@@ -37,6 +40,11 @@ public class HtmlRender extends AbstractRender {
 		ajaxFieldRender.render(request, response, beanMap, bean);
 		jsVarFieldRender.render(request, response, beanMap, bean);
 		imageFieldRender.render(request, response, beanMap, bean);
+	}
+
+	@Override
+	public Map<String, Object> fieldRender(Document document, SpiderBean bean) {
+		return null;
 	}
 
 }

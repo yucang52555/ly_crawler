@@ -1,9 +1,9 @@
 package org.lengyan.crawler.monitor;
 
+import org.lengyan.crawler.annotation.MBean;
 import org.weakref.jmx.Managed;
 
 import com.alibaba.fastjson.JSON;
-import org.lengyan.crawler.annotation.MBean;
 
 @MBean("render")
 public class RenderMBean {

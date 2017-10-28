@@ -6,8 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.reflections.ReflectionUtils;
-
-import org.lengyan.crawler.annotation.Ajax;
+import org.lengyan.crawler.annotation.html.Ajax;
 import org.lengyan.crawler.downloader.DownloadException;
 import org.lengyan.crawler.downloader.DownloaderContext;
 import org.lengyan.crawler.request.HttpRequest;

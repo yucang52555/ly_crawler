@@ -1,21 +1,23 @@
 package org.lengyan.crawler.spider.render;
 
 import java.lang.reflect.Field;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.reflections.ReflectionUtils;
-
-import org.lengyan.crawler.annotation.FieldRenderName;
-import org.lengyan.crawler.annotation.Href;
+import org.dom4j.Document;
+import org.lengyan.crawler.annotation.html.FieldRenderName;
+import org.lengyan.crawler.annotation.html.Href;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;
 import org.lengyan.crawler.scheduler.DeriveSchedulerContext;
 import org.lengyan.crawler.spider.SpiderBean;
 import org.lengyan.crawler.utils.ReflectUtils;
+import org.reflections.ReflectionUtils;
 
 import net.sf.cglib.beans.BeanMap;
 
@@ -75,8 +77,36 @@ public abstract class AbstractRender implements Render {
 			return null;
 		}
 	}
+	
+	@Override
+	public SpiderBean inject(Class<? extends SpiderBean> clazz, Document document) {
+		try {
+			SpiderBean bean = clazz.newInstance();
+			Map<String, Object> beanMap = fieldRender(document, bean);
+//			Set<Field> customFields = ReflectionUtils.getAllFields(bean.getClass(),	ReflectionUtils.withAnnotation(FieldRenderName.class));
+//			for (Field customField : customFields) {
+//				FieldRenderName fieldRender = customField.getAnnotation(FieldRenderName.class);
+//				String name = fieldRender.value();
+//				CustomFieldRender customFieldRender = customFieldRenderFactory.getCustomFieldRender(name);
+//				if (customFieldRender != null) {
+//					customFieldRender.render(document, beanMap, bean, customField);
+//				}
+//			}
+			for (Iterator<String> iterator = beanMap.keySet().iterator(); iterator.hasNext();) {
+				String key = iterator.next();
+				bean = (SpiderBean) beanMap.get(key);
+			}
+			return bean;
+		} catch(Exception ex) {
+			//throw new RenderException(ex.getMessage(), clazz);
+			log.error("instance SpiderBean error", ex);
+			return null;
+		}
+	}
 
 	public abstract void fieldRender(HttpRequest request, HttpResponse response, BeanMap beanMap, SpiderBean bean);
+	
+	public abstract Map<String, Object> fieldRender(Document document, SpiderBean bean);
 
 	/**
 	 * 需要继续抓取的请求

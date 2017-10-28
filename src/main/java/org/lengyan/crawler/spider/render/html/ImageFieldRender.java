@@ -8,8 +8,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.reflections.ReflectionUtils;
-
-import org.lengyan.crawler.annotation.Image;
+import org.lengyan.crawler.annotation.html.Image;
 import org.lengyan.crawler.downloader.DownloaderContext;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;

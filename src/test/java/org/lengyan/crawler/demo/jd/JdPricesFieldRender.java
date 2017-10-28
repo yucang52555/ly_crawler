@@ -8,7 +8,9 @@ import java.util.List;
 import net.sf.cglib.beans.BeanMap;
 
 import com.alibaba.fastjson.JSON;
-import org.lengyan.crawler.annotation.FieldRenderName;
+
+import org.dom4j.Document;
+import org.lengyan.crawler.annotation.html.FieldRenderName;
 import org.lengyan.crawler.downloader.DownloaderContext;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;
@@ -41,6 +43,13 @@ public class JdPricesFieldRender implements CustomFieldRender {
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+
+	@Override
+	public void render(Document document, BeanMap beanMap, SpiderBean bean, Field field) {
+		// TODO Auto-generated method stub
+		
+		
 	}
 
 

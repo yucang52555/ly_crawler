@@ -1,8 +1,8 @@
 package org.lengyan.crawler.demo.sogouwx;
 
 import org.lengyan.crawler.annotation.Gecco;
-import org.lengyan.crawler.annotation.HtmlField;
-import org.lengyan.crawler.annotation.Text;
+import org.lengyan.crawler.annotation.html.HtmlField;
+import org.lengyan.crawler.annotation.html.Text;
 import org.lengyan.crawler.spider.HtmlBean;
 
 

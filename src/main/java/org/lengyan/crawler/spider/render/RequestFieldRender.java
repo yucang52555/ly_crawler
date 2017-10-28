@@ -6,7 +6,6 @@ import java.util.Set;
 import net.sf.cglib.beans.BeanMap;
 
 import org.reflections.ReflectionUtils;
-
 import org.lengyan.crawler.annotation.Request;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;

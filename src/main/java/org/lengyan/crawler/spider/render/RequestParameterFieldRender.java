@@ -9,7 +9,6 @@ import net.sf.cglib.beans.BeanMap;
 
 import org.apache.commons.lang3.StringUtils;
 import org.reflections.ReflectionUtils;
-
 import org.lengyan.crawler.annotation.RequestParameter;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;

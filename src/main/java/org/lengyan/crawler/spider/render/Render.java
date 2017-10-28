@@ -1,5 +1,6 @@
 package org.lengyan.crawler.spider.render;
 
+import org.dom4j.Document;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;
 import org.lengyan.crawler.spider.SpiderBean;
@@ -15,4 +16,6 @@ public interface Render {
 	public SpiderBean inject(Class<? extends SpiderBean> clazz, HttpRequest request, HttpResponse response);
 	
 	public void requests(HttpRequest request, SpiderBean bean);
+
+	public SpiderBean inject(Class<? extends SpiderBean> clazz, Document document);
 }

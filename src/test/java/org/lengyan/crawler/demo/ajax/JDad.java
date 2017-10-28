@@ -3,6 +3,7 @@ package org.lengyan.crawler.demo.ajax;
 import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
+
 import org.lengyan.crawler.annotation.JSONPath;
 import org.lengyan.crawler.spider.JsonBean;
 

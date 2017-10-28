@@ -1,4 +1,4 @@
-package org.lengyan.crawler.annotation;
+package org.lengyan.crawler.annotation.html;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 默认类型，表示获取html元素的inner text。属性支持java基本类型的自动转换。
+ * 获取html元素的attribute。属性支持java基本类型的自动转换。
  * 
  * @author huchengyi
  *
@@ -15,7 +15,12 @@ import java.lang.annotation.Target;
 @Inherited
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Text {
-
-	boolean own() default true;
+public @interface Attr {
+	
+	/**
+	 * 表示属性名称
+	 * @return 属性名称
+	 */
+	String value();
+	
 }

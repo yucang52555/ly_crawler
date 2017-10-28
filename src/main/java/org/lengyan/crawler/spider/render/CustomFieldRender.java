@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 import net.sf.cglib.beans.BeanMap;
 
+import org.dom4j.Document;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;
 import org.lengyan.crawler.spider.SpiderBean;
@@ -25,5 +26,7 @@ public interface CustomFieldRender {
 	 * @param field 需要注入的Field
 	 */
 	public void render(HttpRequest request, HttpResponse response, BeanMap beanMap, SpiderBean bean, Field field);
+	
+	public void render(Document document, BeanMap beanMap, SpiderBean bean, Field field);
 
 }

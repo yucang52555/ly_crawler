@@ -1,8 +1,8 @@
 package org.lengyan.crawler.spider;
 
-import org.lengyan.crawler.annotation.Href;
-import org.lengyan.crawler.annotation.HtmlField;
-import org.lengyan.crawler.annotation.Text;
+import org.lengyan.crawler.annotation.html.Href;
+import org.lengyan.crawler.annotation.html.HtmlField;
+import org.lengyan.crawler.annotation.html.Text;
 
 public class HrefBean implements SpiderBean {
 

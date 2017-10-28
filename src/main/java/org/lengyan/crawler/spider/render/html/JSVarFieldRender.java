@@ -17,7 +17,8 @@ import org.mozilla.javascript.ScriptableObject;
 import org.reflections.ReflectionUtils;
 
 import com.alibaba.fastjson.JSON;
-import org.lengyan.crawler.annotation.JSVar;
+
+import org.lengyan.crawler.annotation.html.JSVar;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;
 import org.lengyan.crawler.spider.SpiderBean;

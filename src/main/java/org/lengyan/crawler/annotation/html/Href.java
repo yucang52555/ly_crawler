@@ -1,4 +1,4 @@
-package org.lengyan.crawler.annotation;
+package org.lengyan.crawler.annotation.html;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;

@@ -3,7 +3,6 @@ package org.lengyan.crawler.dynamic;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import org.lengyan.crawler.annotation.Gecco;
 
 import javassist.CannotCompileException;

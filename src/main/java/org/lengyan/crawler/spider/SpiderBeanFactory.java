@@ -12,7 +12,6 @@ import org.apache.commons.logging.LogFactory;
 import org.reflections.Reflections;
 import org.reflections.scanners.TypeAnnotationsScanner;
 import org.reflections.util.ConfigurationBuilder;
-
 import org.lengyan.crawler.annotation.Gecco;
 import org.lengyan.crawler.downloader.DownloaderAOPFactory;
 import org.lengyan.crawler.downloader.DownloaderFactory;
