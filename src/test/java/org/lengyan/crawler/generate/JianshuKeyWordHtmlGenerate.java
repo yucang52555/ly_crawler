@@ -11,7 +11,7 @@ import org.lengyan.crawler.store.service.IJianshuKeywordService;
 import org.lengyan.crawler.store.service.impl.JianshuKeywordServiceImpl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class JianshuHtmlGenerate {
+public class JianshuKeyWordHtmlGenerate {
 	
 	private static ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:init-data.xml");
 	

@@ -217,4 +217,19 @@
 		where
 		article_url = #{articleUrl,jdbcType=VARCHAR}
 	</select>
+	
+	<select id="selectAllUserList" resultMap="BaseResultMap">
+		select
+		id, headimg_url headimgUrl, user_name userName,
+		user_url userUrl, title, article_url articleUrl,
+		abstract_content abstractContent, article_create_time articleCreateTime, read_count
+		readCount,
+		comment_count commentCount, approve_count approveCount, create_time createTime,
+		update_time updateTime, content
+		from
+		T_JIANSHU_ARTICLE
+		where
+		1 = 1
+		group by user_url
+	</select>
 </mapper>

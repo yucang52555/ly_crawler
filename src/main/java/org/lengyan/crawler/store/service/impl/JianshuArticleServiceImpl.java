@@ -1,5 +1,7 @@
 package org.lengyan.crawler.store.service.impl;
 
+import java.util.List;
+
 import org.lengyan.crawler.store.dao.jianshu.JianshuArticleMapper;
 import org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuArticle;
 import org.lengyan.crawler.store.service.IJianshuArticleService;
@@ -25,5 +27,10 @@ public class JianshuArticleServiceImpl implements IJianshuArticleService {
 	@Override
 	public void updateArticle(JianshuArticle jianshuArticle) {
 		jianshuArticleMapper.updateByPrimaryKeySelective(jianshuArticle);
+	}
+
+	@Override
+	public List<JianshuArticle> selectAllUserList() {
+		return jianshuArticleMapper.selectAllUserList();
 	}
 }

@@ -1,5 +1,7 @@
 package org.lengyan.crawler.store.service;
 
+import java.util.List;
+
 import org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuArticle;
 
 /**
@@ -27,5 +29,11 @@ public interface IJianshuArticleService {
 	 * @param jianshuArticle
 	 */
 	public void updateArticle(JianshuArticle jianshuArticle);
+
+	/**
+	 * 查询文章列表
+	 * @return
+	 */
+	public List<JianshuArticle> selectAllUserList();
 	
 }
