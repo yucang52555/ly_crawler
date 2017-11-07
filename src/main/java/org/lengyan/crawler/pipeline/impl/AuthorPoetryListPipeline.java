@@ -6,8 +6,8 @@ import org.lengyan.crawler.demo.poetry.GSWPoetryAuthor;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.scheduler.DeriveSchedulerContext;
-import org.lengyan.crawler.store.service.IPoetryService;
-import org.lengyan.crawler.store.service.impl.PoetryServiceImpl;
+import org.lengyan.crawler.store.service.service.gushiwen.IPoetryService;
+import org.lengyan.crawler.store.service.serviceimpl.gushiwen.PoetryServiceImpl;
 import org.lengyan.crawler.utils.CommonUtils;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

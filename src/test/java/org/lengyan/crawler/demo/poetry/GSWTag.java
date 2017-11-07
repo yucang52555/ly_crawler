@@ -9,7 +9,7 @@ import org.lengyan.crawler.annotation.html.HtmlField;
 import org.lengyan.crawler.request.HttpGetRequest;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.spider.HtmlBean;
-import org.lengyan.crawler.store.model.po.Tag;
+import org.lengyan.crawler.store.model.po.htmlpo.gushiwen.Tag;
 
 /**
  * 古诗文-标签

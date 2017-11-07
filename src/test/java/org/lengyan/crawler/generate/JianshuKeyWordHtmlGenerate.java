@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuKeyword;
-import org.lengyan.crawler.store.service.IJianshuKeywordService;
-import org.lengyan.crawler.store.service.impl.JianshuKeywordServiceImpl;
+import org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuKeyword;
+import org.lengyan.crawler.store.service.service.jianshu.IJianshuKeywordService;
+import org.lengyan.crawler.store.service.serviceimpl.jianshu.JianshuKeywordServiceImpl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class JianshuKeyWordHtmlGenerate {

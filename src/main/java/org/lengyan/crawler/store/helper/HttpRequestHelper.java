@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.lengyan.crawler.request.HttpGetRequest;
 import org.lengyan.crawler.request.HttpRequest;
-import org.lengyan.crawler.store.model.po.Tag;
-import org.lengyan.crawler.store.service.ITagService;
-import org.lengyan.crawler.store.service.impl.TagServiceImpl;
+import org.lengyan.crawler.store.model.po.htmlpo.gushiwen.Tag;
+import org.lengyan.crawler.store.service.service.gushiwen.ITagService;
+import org.lengyan.crawler.store.service.serviceimpl.gushiwen.TagServiceImpl;
 import org.lengyan.crawler.utils.CommonUtils;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

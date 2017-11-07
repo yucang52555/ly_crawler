@@ -3,9 +3,9 @@ package org.lengyan.crawler.pipeline.impl;
 import org.lengyan.crawler.annotation.PipelineName;
 import org.lengyan.crawler.demo.qq.GSWQqInfo;
 import org.lengyan.crawler.pipeline.Pipeline;
-import org.lengyan.crawler.store.model.po.QQAccount;
-import org.lengyan.crawler.store.service.IQQAccountService;
-import org.lengyan.crawler.store.service.impl.QQAcountServiceImpl;
+import org.lengyan.crawler.store.model.po.htmlpo.qq.QQAccount;
+import org.lengyan.crawler.store.service.service.qq.IQQAccountService;
+import org.lengyan.crawler.store.service.serviceimpl.qq.QQAcountServiceImpl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alibaba.fastjson.JSON;

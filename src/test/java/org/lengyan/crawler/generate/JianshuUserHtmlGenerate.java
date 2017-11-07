@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuArticle;
-import org.lengyan.crawler.store.service.IJianshuArticleService;
-import org.lengyan.crawler.store.service.impl.JianshuArticleServiceImpl;
+import org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle;
+import org.lengyan.crawler.store.service.service.jianshu.IJianshuArticleService;
+import org.lengyan.crawler.store.service.serviceimpl.jianshu.JianshuArticleServiceImpl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class JianshuUserHtmlGenerate {

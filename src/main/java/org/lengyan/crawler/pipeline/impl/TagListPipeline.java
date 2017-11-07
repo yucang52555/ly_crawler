@@ -3,8 +3,8 @@ package org.lengyan.crawler.pipeline.impl;
 import org.lengyan.crawler.annotation.PipelineName;
 import org.lengyan.crawler.demo.poetry.GSWTag;
 import org.lengyan.crawler.pipeline.Pipeline;
-import org.lengyan.crawler.store.service.ITagService;
-import org.lengyan.crawler.store.service.impl.TagServiceImpl;
+import org.lengyan.crawler.store.service.service.gushiwen.ITagService;
+import org.lengyan.crawler.store.service.serviceimpl.gushiwen.TagServiceImpl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alibaba.fastjson.JSON;

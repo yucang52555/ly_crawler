@@ -2,7 +2,7 @@ package org.lengyan.crawler.store.dao.jianshu;
 
 import java.util.List;
 
-import org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuArticle;
+import org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle;
 
 public interface JianshuArticleMapper {
     int insert(JianshuArticle record);

@@ -6,9 +6,9 @@ import org.lengyan.crawler.demo.poetry.GSWCharpter;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.scheduler.DeriveSchedulerContext;
-import org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs;
-import org.lengyan.crawler.store.service.IChapterService;
-import org.lengyan.crawler.store.service.impl.ChapterServiceImpl;
+import org.lengyan.crawler.store.model.po.htmlpo.gushiwen.GushiwenChapterWithBLOBs;
+import org.lengyan.crawler.store.service.service.gushiwen.IChapterService;
+import org.lengyan.crawler.store.service.serviceimpl.gushiwen.ChapterServiceImpl;
 import org.lengyan.crawler.utils.CommonUtils;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

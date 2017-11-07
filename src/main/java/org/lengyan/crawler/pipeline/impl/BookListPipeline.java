@@ -6,8 +6,8 @@ import org.lengyan.crawler.demo.poetry.GSWBook;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.scheduler.DeriveSchedulerContext;
-import org.lengyan.crawler.store.service.IBookService;
-import org.lengyan.crawler.store.service.impl.BookServiceImpl;
+import org.lengyan.crawler.store.service.service.gushiwen.IBookService;
+import org.lengyan.crawler.store.service.serviceimpl.gushiwen.BookServiceImpl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alibaba.fastjson.JSON;

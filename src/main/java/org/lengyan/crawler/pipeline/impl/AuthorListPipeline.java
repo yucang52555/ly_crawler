@@ -6,8 +6,8 @@ import org.lengyan.crawler.demo.poetry.GSWAuthor;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.scheduler.DeriveSchedulerContext;
-import org.lengyan.crawler.store.service.IAuthorService;
-import org.lengyan.crawler.store.service.impl.AuthorServiceImpl;
+import org.lengyan.crawler.store.service.service.gushiwen.IAuthorService;
+import org.lengyan.crawler.store.service.serviceimpl.gushiwen.AuthorServiceImpl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alibaba.fastjson.JSON;

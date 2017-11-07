@@ -2,7 +2,7 @@ package org.lengyan.crawler.store.dao.jianshu;
 
 import java.util.List;
 
-import org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuKeyword;
+import org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuKeyword;
 
 public interface JianshuKeywordMapper {
     int deleteByPrimaryKey(Long id);

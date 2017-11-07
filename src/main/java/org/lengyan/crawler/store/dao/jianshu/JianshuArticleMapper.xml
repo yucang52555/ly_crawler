@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lengyan.crawler.store.dao.jianshu.JianshuArticleMapper">
 	<resultMap id="BaseResultMap"
-		type="org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuArticle">
+		type="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle">
 		<result column="id" property="id" jdbcType="BIGINT" />
 		<result column="headimg_url" property="headimgUrl" jdbcType="VARCHAR" />
 		<result column="user_name" property="userName" jdbcType="VARCHAR" />
@@ -22,7 +22,7 @@
 		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
 	</resultMap>
 	<resultMap id="ResultMapWithBLOBs"
-		type="org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuArticle"
+		type="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle"
 		extends="BaseResultMap">
 		<result column="content" property="content" jdbcType="LONGVARCHAR" />
 	</resultMap>
@@ -30,7 +30,7 @@
 		content
 	</sql>
 	<insert id="insert"
-		parameterType="org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuArticle">
+		parameterType="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle">
 		insert into T_JIANSHU_ARTICLE (id, headimg_url, user_name,
 		user_url, title, article_url,
 		abstract_content, article_create_time, read_count,
@@ -46,7 +46,7 @@
 		#{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
 	</insert>
 	<insert id="insertSelective"
-		parameterType="org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuArticle">
+		parameterType="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle">
 		insert into T_JIANSHU_ARTICLE
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
@@ -139,7 +139,7 @@
 	</insert>
 
 	<update id="updateByPrimaryKeySelective"
-		parameterType="org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuArticle">
+		parameterType="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle">
 		update T_JIANSHU_ARTICLE
 		<set>
 			<if test="headimgUrl != null">
@@ -185,7 +185,7 @@
 		where id = #{id,jdbcType=BIGINT}
 	</update>
 	<update id="updateByPrimaryKey"
-		parameterType="org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuArticle">
+		parameterType="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle">
 		update T_JIANSHU_ARTICLE
 		set
 		headimg_url = #{headimgUrl,jdbcType=VARCHAR},

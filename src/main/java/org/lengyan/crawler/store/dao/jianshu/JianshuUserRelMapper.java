@@ -1,6 +1,6 @@
 package org.lengyan.crawler.store.dao.jianshu;
 
-import org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuUserRel;
+import org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuUserRel;
 
 public interface JianshuUserRelMapper {
     int deleteByPrimaryKey(Long id);

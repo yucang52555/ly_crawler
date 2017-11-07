@@ -1,7 +1,7 @@
 package org.lengyan.crawler.pipeline.xmlimpl;
 
 import org.lengyan.crawler.pipeline.Pipeline;
-import org.lengyan.crawler.store.model.xmlpo.jianshu.JianshuKeyword;
+import org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuKeyword;
 
 public class JianshuKeywordPipeline implements Pipeline<JianshuKeyword> {
 

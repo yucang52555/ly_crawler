@@ -11,7 +11,7 @@ import org.lengyan.crawler.annotation.html.Text;
 import org.lengyan.crawler.request.HttpGetRequest;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.spider.HtmlBean;
-import org.lengyan.crawler.store.model.po.GushiwenChapterWithBLOBs;
+import org.lengyan.crawler.store.model.po.htmlpo.gushiwen.GushiwenChapterWithBLOBs;
 
 /**
  * 古诗文-章节

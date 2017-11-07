@@ -6,8 +6,8 @@ import org.lengyan.crawler.demo.poetry.GSWMinju;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.scheduler.DeriveSchedulerContext;
-import org.lengyan.crawler.store.service.IMinjuService;
-import org.lengyan.crawler.store.service.impl.MinjuServiceImpl;
+import org.lengyan.crawler.store.service.service.gushiwen.IMinjuService;
+import org.lengyan.crawler.store.service.serviceimpl.gushiwen.MinjuServiceImpl;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.alibaba.fastjson.JSON;
