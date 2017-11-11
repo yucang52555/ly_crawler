@@ -139,7 +139,7 @@ public class HtmlParser {
 	}
 
 	public Elements $(String selector) {
-		Elements elements = document.select(selector);
+		Elements elements = document.select(".FRAME_login");
 		if (SpiderThreadLocal.get().getEngine().isDebug()) {
 			if (!selector.equalsIgnoreCase("script")) {
 				// log.debug("["+selector+"]--->["+elements+"]");
