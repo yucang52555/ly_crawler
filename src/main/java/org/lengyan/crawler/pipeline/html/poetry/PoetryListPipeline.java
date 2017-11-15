@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.lengyan.crawler.annotation.PipelineName;
-import org.lengyan.crawler.html.poetry.GSWPoetry;
+import org.lengyan.crawler.entry.html.poetry.GSWPoetry;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.scheduler.DeriveSchedulerContext;

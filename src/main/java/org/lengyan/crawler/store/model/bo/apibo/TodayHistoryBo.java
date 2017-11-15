@@ -2,6 +2,8 @@ package org.lengyan.crawler.store.model.bo.apibo;
 
 import java.util.List;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.lengyan.crawler.store.model.po.apipo.juhe.JuheapiTohis;
 
 /**
@@ -38,5 +40,13 @@ public class TodayHistoryBo {
 
 	public void setResult(List<JuheapiTohis> result) {
 		this.result = result;
+	}
+
+	public TodayHistoryBo() {
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
 	}
 }

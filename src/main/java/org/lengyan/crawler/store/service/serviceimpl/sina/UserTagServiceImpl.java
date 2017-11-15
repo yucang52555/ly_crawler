@@ -1,5 +1,7 @@
 package org.lengyan.crawler.store.service.serviceimpl.sina;
 
+import java.util.List;
+
 import org.lengyan.crawler.store.dao.sina.UserTagMapper;
 import org.lengyan.crawler.store.model.po.htmlpo.sina.UserTag;
 import org.lengyan.crawler.store.service.service.sina.IUserTagService;
@@ -21,5 +23,11 @@ public class UserTagServiceImpl implements IUserTagService{
 	public void updateUserTag(UserTag userTag) {
 		userTagMapper.updateByPrimaryKeySelective(userTag);
 	}
-	
+
+	@Override
+	public List<UserTag> selectAllUserTagList() {
+		return userTagMapper.selectAllUserTagList();
+	}
+
+
 }

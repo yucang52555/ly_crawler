@@ -1,7 +1,7 @@
 package org.lengyan.crawler.pipeline.html.poetry;
 
 import org.lengyan.crawler.annotation.PipelineName;
-import org.lengyan.crawler.html.poetry.GSWTag;
+import org.lengyan.crawler.entry.html.poetry.GSWTag;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.store.service.service.gushiwen.ITagService;
 import org.lengyan.crawler.store.service.serviceimpl.gushiwen.TagServiceImpl;

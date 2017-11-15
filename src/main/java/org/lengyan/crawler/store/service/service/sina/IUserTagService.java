@@ -1,5 +1,7 @@
 package org.lengyan.crawler.store.service.service.sina;
 
+import java.util.List;
+
 import org.lengyan.crawler.store.model.po.htmlpo.sina.UserTag;
 
 /**
@@ -11,4 +13,10 @@ public interface IUserTagService {
 	public void saveUserTag(UserTag userTag);
 
 	public void updateUserTag(UserTag userTag);
+
+	/**
+	 * 查询新浪标签列表
+	 * @return
+	 */
+	public List<UserTag> selectAllUserTagList();
 }

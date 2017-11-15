@@ -1,7 +1,7 @@
 package org.lengyan.crawler.pipeline.html.qq;
 
 import org.lengyan.crawler.annotation.PipelineName;
-import org.lengyan.crawler.demo.qq.GSWQqInfo;
+import org.lengyan.crawler.entry.html.demo.qq.GSWQqInfo;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.store.model.po.htmlpo.qq.QQAccount;
 import org.lengyan.crawler.store.service.service.qq.IQQAccountService;

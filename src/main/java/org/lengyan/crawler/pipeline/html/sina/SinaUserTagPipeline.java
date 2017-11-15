@@ -3,7 +3,7 @@ package org.lengyan.crawler.pipeline.html.sina;
 import java.util.List;
 
 import org.lengyan.crawler.annotation.PipelineName;
-import org.lengyan.crawler.html.sina.SinaUserTag;
+import org.lengyan.crawler.entry.html.sina.SinaUserTag;
 import org.lengyan.crawler.pipeline.Pipeline;
 import org.lengyan.crawler.store.model.po.htmlpo.sina.UserTag;
 import org.lengyan.crawler.store.service.service.sina.IUserTagService;
