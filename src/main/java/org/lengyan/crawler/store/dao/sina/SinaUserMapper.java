@@ -17,4 +17,6 @@ public interface SinaUserMapper {
     int updateByPrimaryKeySelective(SinaUser record);
 
     int updateByPrimaryKey(SinaUser record);
+
+	SinaUser selectByUserUrl(String userUrl);
 }

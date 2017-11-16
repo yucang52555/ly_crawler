@@ -20,7 +20,13 @@ public class SinaUserServiceImpl implements ISinaUserService{
 
     @Override
     public void saveSinaUser(SinaUser sinaUser) {
-        sinaUserMapper.insertSelective(sinaUser);
+    	SinaUser sinaUserTemp = sinaUserMapper.selectByUserUrl(sinaUser.getUserUrl());
+    	if (sinaUserTemp == null) {
+    		sinaUserMapper.insertSelective(sinaUser);
+		} else {
+			sinaUser.setId(sinaUserTemp.getId());
+			sinaUserMapper.updateByPrimaryKeySelective(sinaUser);
+		}
     }
 
     @Override

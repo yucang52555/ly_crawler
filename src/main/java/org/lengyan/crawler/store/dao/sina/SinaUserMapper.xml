@@ -196,4 +196,11 @@
       tags = #{tags,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  <select id="selectByUserUrl" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_SINA_USER
+    where user_url = #{userUrl,jdbcType=VARCHAR}
+  </select>
 </mapper>
