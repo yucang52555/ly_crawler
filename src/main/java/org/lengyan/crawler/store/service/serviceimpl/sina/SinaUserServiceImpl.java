@@ -3,6 +3,7 @@ package org.lengyan.crawler.store.service.serviceimpl.sina;
 import org.lengyan.crawler.store.dao.sina.SinaUserMapper;
 import org.lengyan.crawler.store.model.po.xmlpo.sina.SinaUser;
 import org.lengyan.crawler.store.service.service.sina.ISinaUserService;
+import org.lengyan.crawler.utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +39,13 @@ public class SinaUserServiceImpl implements ISinaUserService{
     public List<SinaUser> selectAllUserList() {
         List<SinaUser> sinaUserList = sinaUserMapper.selectAllUserList();
         return sinaUserList;
+    }
+
+    @Override
+    public void updateSinaUserByUserName(SinaUser sinaUser) {
+        List<SinaUser> sinaUserList = sinaUserMapper.selectByUserName(sinaUser.getUserName());
+        for (int i = 0; i < CommonUtils.sizeOf(sinaUserList); i++) {
+            sinaUserMapper.updateByPrimaryKeySelective(sinaUser);
+        }
     }
 }
