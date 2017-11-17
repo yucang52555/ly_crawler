@@ -2,6 +2,8 @@ package org.lengyan.crawler.store.dao.sina;
 
 import org.lengyan.crawler.store.model.po.xmlpo.sina.SinaUser;
 
+import java.util.List;
+
 /**
  * 新浪用户
  */
@@ -19,4 +21,10 @@ public interface SinaUserMapper {
     int updateByPrimaryKey(SinaUser record);
 
 	SinaUser selectByUserUrl(String userUrl);
+
+    /**
+     * 获取所有用户信息
+     * @return
+     */
+    List<SinaUser> selectAllUserList();
 }

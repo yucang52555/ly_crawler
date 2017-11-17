@@ -203,4 +203,11 @@
     from T_SINA_USER
     where user_url = #{userUrl,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectAllUserList" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from T_SINA_USER
+    where 1 = 1
+  </select>
 </mapper>

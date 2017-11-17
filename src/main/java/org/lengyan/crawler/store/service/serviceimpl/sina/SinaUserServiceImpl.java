@@ -36,6 +36,7 @@ public class SinaUserServiceImpl implements ISinaUserService{
 
     @Override
     public List<SinaUser> selectAllUserList() {
-        return null;
+        List<SinaUser> sinaUserList = sinaUserMapper.selectAllUserList();
+        return sinaUserList;
     }
 }
