@@ -45,6 +45,7 @@ public class SinaUserServiceImpl implements ISinaUserService{
     public void updateSinaUserByUserName(SinaUser sinaUser) {
         List<SinaUser> sinaUserList = sinaUserMapper.selectByUserName(sinaUser.getUserName());
         for (int i = 0; i < CommonUtils.sizeOf(sinaUserList); i++) {
+        	sinaUser.setId(sinaUserList.get(i).getId());
             sinaUserMapper.updateByPrimaryKeySelective(sinaUser);
         }
     }

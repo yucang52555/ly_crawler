@@ -69,7 +69,7 @@ public class SinaUserMainPageParser implements XmlBean {
                             sinaUser.setFansCount(Integer.parseInt(userElement.elementText("fansCount")));
                             sinaUser.setWeiboCount(Integer.parseInt(userElement.elementText("weiboCount")));
                             sinaUser.setLevel(userElement.elementText("level"));
-                            sinaUser.setBirthday(userElement.elementText("birthday"));
+                            sinaUser.setBirthday(RegexUtils.specialCharacterFilter(userElement.elementText("birthday")));
                             sinaUserService.updateSinaUserByUserName(sinaUser);
                             //微博信息列表处理
                             List<Element> weiboElements = userElement.element("weibos").elements("item");
@@ -79,8 +79,8 @@ public class SinaUserMainPageParser implements XmlBean {
                                     SinaWeibo sinaWeibo = new SinaWeibo();
                                     sinaWeibo.setCreateTime(now);
                                     sinaWeibo.setPubTime(weiboElement.elementText("pubTime"));
-                                    sinaWeibo.setPubContent(weiboElement.elementText("pubContent"));
-                                    sinaWeibo.setWeiboUrl(weiboElement.elementText("weiboUrl"));
+                                    sinaWeibo.setPubContent(RegexUtils.specialCharacterFilter(weiboElement.elementText("pubContent")));
+                                    sinaWeibo.setWeiboUrl("https://weibo.com" + weiboElement.elementText("weiboUrl"));
                                     sinaWeiboService.saveSinaWeibo(sinaWeibo);
                                 }
                             }
