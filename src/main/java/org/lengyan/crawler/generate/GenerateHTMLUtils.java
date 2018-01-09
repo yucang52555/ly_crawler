@@ -51,8 +51,7 @@ public class GenerateHTMLUtils {
 				page = page.replace("####title####", map.get("title").toString());
 				page = page.replace("####content####", map.get("content").toString());
 				// 由于每篇文章在数据库中的id是唯一的，所以即使是文件名的前面有了重复但再加上文章的id即可保证文件名的唯一性
-				pageName = targetPath + "/" + randomPageName(false)
-						+ map.get("title") + ".html";
+				pageName = targetPath + "/"	+ map.get("title") + ".html";
 				File newPage = new File(pageName);
 				File target = new File(targetPath);
 				if (!target.exists()) {
