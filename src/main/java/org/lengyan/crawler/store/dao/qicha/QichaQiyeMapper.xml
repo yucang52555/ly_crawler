@@ -42,15 +42,15 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from T_QICHA_QIYE
+    from t_qicha_qiye
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from T_QICHA_QIYE
+    delete from t_qicha_qiye
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="org.lengyan.crawler.store.model.po.xmlpo.qicha.QichaQiye" >
-    insert into T_QICHA_QIYE (id, qiye_name, qiye_url, 
+    insert into t_qicha_qiye (id, qiye_name, qiye_url, 
       qiye_status, qiye_birthday, qiye_mobile, 
       qiye_email, qiye_mainurl, qiye_address, 
       qiye_update, read_count, follow_count, 
@@ -72,7 +72,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="org.lengyan.crawler.store.model.po.xmlpo.qicha.QichaQiye" >
-    insert into T_QICHA_QIYE
+    insert into t_qicha_qiye
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -253,7 +253,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lengyan.crawler.store.model.po.xmlpo.qicha.QichaQiye" >
-    update T_QICHA_QIYE
+    update t_qicha_qiye
     <set >
       <if test="qiyeName != null" >
         qiye_name = #{qiyeName,jdbcType=VARCHAR},
@@ -343,7 +343,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lengyan.crawler.store.model.po.xmlpo.qicha.QichaQiye" >
-    update T_QICHA_QIYE
+    update t_qicha_qiye
     set qiye_name = #{qiyeName,jdbcType=VARCHAR},
       qiye_url = #{qiyeUrl,jdbcType=VARCHAR},
       qiye_status = #{qiyeStatus,jdbcType=VARCHAR},
@@ -378,14 +378,14 @@
   <select id="selectByQiyeUrl" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select
     <include refid="Base_Column_List" />
-    from T_QICHA_QIYE
+    from t_qicha_qiye
     where qiye_url = #{qiyeUrl,jdbcType=VARCHAR}
   </select>
 
   <select id="selectAllQiyeList" resultMap="BaseResultMap" >
     select
     <include refid="Base_Column_List" />
-    from T_QICHA_QIYE
+    from t_qicha_qiye
     where 1 = 1
   </select>
 
