@@ -24,6 +24,7 @@
 		<property name="locations">
 			<list>
 				<value>database.properties</value>
+				<value>crawler.properties</value>
 			</list>
 		</property>
 	</bean>

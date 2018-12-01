@@ -1,24 +1,20 @@
 package org.lengyan.crawler.entry.xml.sina;
 
+import java.io.File;
+import java.util.List;
+
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.lengyan.crawler.annotation.xml.XmlField;
 import org.lengyan.crawler.spider.XmlBean;
-import org.lengyan.crawler.store.model.po.htmlpo.sina.UserTag;
-import org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuKeyword;
 import org.lengyan.crawler.store.model.po.xmlpo.sina.SinaUser;
 import org.lengyan.crawler.store.service.service.sina.ISinaUserService;
-import org.lengyan.crawler.store.service.service.sina.IUserTagService;
 import org.lengyan.crawler.store.service.serviceimpl.sina.SinaUserServiceImpl;
-import org.lengyan.crawler.store.service.serviceimpl.sina.UserTagServiceImpl;
 import org.lengyan.crawler.utils.FileUtils;
 import org.lengyan.crawler.utils.PropertiesUtil;
 import org.lengyan.crawler.utils.RegexUtils;
 import org.lengyan.crawler.utils.xml.XMLParseUtil;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.io.File;
-import java.util.List;
 
 /**
  * 新浪用户解析
@@ -68,8 +64,8 @@ public class SinaUserParser implements XmlBean {
                                 sinaUser.setGender(element.elementText("gender"));
                                 sinaUser.setRecommendFlag(element.elementText("recommend"));
                                 sinaUser.setFollowCount(Integer.parseInt(element.elementText("followCount")));
-                                sinaUser.setFansCount(Integer.parseInt(element.elementText("fansCount")));
-                                sinaUser.setWeiboCount(Integer.parseInt(element.elementText("weiboCount")));
+//                                sinaUser.setFansCount(Integer.parseInt(element.elementText("fansCount")));
+//                                sinaUser.setWeiboCount(Integer.parseInt(element.elementText("weiboCount")));
                                 sinaUser.setAddress(element.elementText("address"));
                                 sinaUser.setAbstractContent(RegexUtils.specialCharacterFilter(element.elementText("abstractContent")));
                                 sinaUser.setTags(element.elementText("tags"));

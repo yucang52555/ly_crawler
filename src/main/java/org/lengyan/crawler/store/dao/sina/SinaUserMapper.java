@@ -27,4 +27,6 @@ public interface SinaUserMapper {
      * @return
      */
     List<SinaUser> selectAllUserList();
+
+    List<SinaUser> selectByUserName(String userName);
 }

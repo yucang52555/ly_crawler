@@ -18,4 +18,6 @@ public interface ISinaUserService {
 	 * @return
 	 */
 	public List<SinaUser> selectAllUserList();
+
+    void updateSinaUserByUserName(SinaUser sinaUser);
 }

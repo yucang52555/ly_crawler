@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lengyan.crawler.store.dao.sina.SinaWeiboMapper">
+	<resultMap id="BaseResultMap"
+		type="org.lengyan.crawler.store.model.po.xmlpo.sina.SinaWeibo">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="weibo_url" property="weiboUrl" jdbcType="VARCHAR" />
+		<result column="pub_time" property="pubTime" jdbcType="VARCHAR" />
+		<result column="pub_content" property="pubContent" jdbcType="VARCHAR" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="forward_count" property="forwardCount"
+			jdbcType="INTEGER" />
+		<result column="repeat_count" property="repeatCount" jdbcType="INTEGER" />
+		<result column="praise_count" property="praiseCount" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, weibo_url, pub_time, pub_content, user_name, forward_count,
+		repeat_count, praise_count,
+		create_time, update_time
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from T_SINA_WEIBO
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from T_SINA_WEIBO
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert"
+		parameterType="org.lengyan.crawler.store.model.po.xmlpo.sina.SinaWeibo">
+		insert into T_SINA_WEIBO (id, weibo_url, pub_time,
+		pub_content, user_name, forward_count,
+		repeat_count, praise_count, create_time,
+		update_time)
+		values (#{id,jdbcType=BIGINT}, #{weiboUrl,jdbcType=VARCHAR},
+		#{pubTime,jdbcType=VARCHAR},
+		#{pubContent,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{forwardCount,jdbcType=INTEGER},
+		#{repeatCount,jdbcType=INTEGER}, #{praiseCount,jdbcType=INTEGER},
+		#{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective"
+		parameterType="org.lengyan.crawler.store.model.po.xmlpo.sina.SinaWeibo">
+		insert into T_SINA_WEIBO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="weiboUrl != null">
+				weibo_url,
+			</if>
+			<if test="pubTime != null">
+				pub_time,
+			</if>
+			<if test="pubContent != null">
+				pub_content,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="forwardCount != null">
+				forward_count,
+			</if>
+			<if test="repeatCount != null">
+				repeat_count,
+			</if>
+			<if test="praiseCount != null">
+				praise_count,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="weiboUrl != null">
+				#{weiboUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="pubTime != null">
+				#{pubTime,jdbcType=VARCHAR},
+			</if>
+			<if test="pubContent != null">
+				#{pubContent,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="forwardCount != null">
+				#{forwardCount,jdbcType=INTEGER},
+			</if>
+			<if test="repeatCount != null">
+				#{repeatCount,jdbcType=INTEGER},
+			</if>
+			<if test="praiseCount != null">
+				#{praiseCount,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="org.lengyan.crawler.store.model.po.xmlpo.sina.SinaWeibo">
+		update T_SINA_WEIBO
+		<set>
+			<if test="weiboUrl != null">
+				weibo_url = #{weiboUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="pubTime != null">
+				pub_time = #{pubTime,jdbcType=VARCHAR},
+			</if>
+			<if test="pubContent != null">
+				pub_content = #{pubContent,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="forwardCount != null">
+				forward_count = #{forwardCount,jdbcType=INTEGER},
+			</if>
+			<if test="repeatCount != null">
+				repeat_count = #{repeatCount,jdbcType=INTEGER},
+			</if>
+			<if test="praiseCount != null">
+				praise_count = #{praiseCount,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="org.lengyan.crawler.store.model.po.xmlpo.sina.SinaWeibo">
+		update T_SINA_WEIBO
+		set weibo_url = #{weiboUrl,jdbcType=VARCHAR},
+		pub_time = #{pubTime,jdbcType=VARCHAR},
+		pub_content = #{pubContent,jdbcType=VARCHAR},
+		user_name = #{userName,jdbcType=VARCHAR},
+		forward_count = #{forwardCount,jdbcType=INTEGER},
+		repeat_count = #{repeatCount,jdbcType=INTEGER},
+		praise_count = #{praiseCount,jdbcType=INTEGER},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+</mapper>

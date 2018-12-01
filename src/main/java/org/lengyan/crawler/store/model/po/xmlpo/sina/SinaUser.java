@@ -1,5 +1,8 @@
 package org.lengyan.crawler.store.model.po.xmlpo.sina;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class SinaUser {
     private Long id;
 
@@ -28,6 +31,10 @@ public class SinaUser {
     private String abstractContent;
 
     private String tags;
+
+    private String level;
+
+    private String birthday;
 
     public Long getId() {
         return id;
@@ -139,5 +146,26 @@ public class SinaUser {
 
     public void setTags(String tags) {
         this.tags = tags == null ? null : tags.trim();
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 }
