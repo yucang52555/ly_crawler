@@ -17,7 +17,8 @@ public class PropertiesUtil {
 	
 	/**
 	 * 获取指定属性
-	 * @param propertiesName
+	 * @param fileName
+	 * @param propertyKey
 	 * @return
 	 */
 	public static String getProperties(String fileName, String propertyKey) {
@@ -28,7 +29,7 @@ public class PropertiesUtil {
 
 	/**
 	 * 获取配置文件属性
-	 * @param propertiesName
+	 * @param fileName
 	 * @return
 	 */
 	public static Properties getProperties(String fileName) {
@@ -38,7 +39,7 @@ public class PropertiesUtil {
 
 	/**
 	 * 获取配置文件路径
-	 * @param filePath
+	 * @param fileName
 	 * @return
 	 */
 	private static String getConfigPath(String fileName) {

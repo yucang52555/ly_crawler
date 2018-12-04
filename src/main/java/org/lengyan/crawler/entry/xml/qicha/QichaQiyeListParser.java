@@ -1,8 +1,5 @@
 package org.lengyan.crawler.entry.xml.qicha;
 
-import java.io.File;
-import java.util.List;
-
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.lengyan.crawler.spider.XmlBean;
@@ -13,6 +10,9 @@ import org.lengyan.crawler.utils.FileUtils;
 import org.lengyan.crawler.utils.PropertiesUtil;
 import org.lengyan.crawler.utils.xml.XMLParseUtil;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.io.File;
+import java.util.List;
 
 /**
  * 企查查企业列表解析

@@ -50,7 +50,7 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="org.lengyan.crawler.store.model.po.xmlpo.qicha.QichaQiye" >
-    insert into t_qicha_qiye (id, qiye_name, qiye_url, 
+    insert into t_qicha_qiye (id, qiye_name, qiye_url,
       qiye_status, qiye_birthday, qiye_mobile, 
       qiye_email, qiye_mainurl, qiye_address, 
       qiye_update, read_count, follow_count, 
@@ -387,6 +387,14 @@
     <include refid="Base_Column_List" />
     from t_qicha_qiye
     where 1 = 1
+  </select>
+
+  <select id="selectGenNearQiyeList" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from t_qicha_qiye
+    where 1 = 1
+    limit 0,10000
   </select>
 
 </mapper>

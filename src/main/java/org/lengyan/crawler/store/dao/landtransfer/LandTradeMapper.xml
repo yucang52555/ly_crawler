@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lengyan.crawler.store.dao.landtransfer.LandTradeMapper">
+	
+	<resultMap id="BaseResultMap" type="org.lengyan.crawler.store.model.po.htmlpo.landtransfer.LandTrade">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="land_cno" property="landCno" jdbcType="VARCHAR" />
+		<result column="land_position" property="landPosition" jdbcType="VARCHAR" />
+		<result column="land_area" property="landArea" jdbcType="VARCHAR" />
+		<result column="land_acreage" property="landAcreage" jdbcType="VARCHAR" />
+		<result column="land_purpose" property="landPurpose" jdbcType="VARCHAR" />
+		<result column="land_supplymode" property="landSupplymode" jdbcType="VARCHAR" />
+		<result column="land_tradedate" property="landTradedate" jdbcType="VARCHAR" />
+		<result column="land_tradeurl" property="landTradeurl" jdbcType="VARCHAR" />
+		<result column="land_curl" property="landCurl" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		id, land_cno, land_position, land_area, land_acreage, land_purpose, land_supplymode, land_tradedate, land_tradeurl, land_curl, create_time, update_time
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from t_land_trade
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+
+	<select id="selectByDetailUrl" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from t_land_trade
+		where land_tradeurl = #{detailUrl,jdbcType=VARCHAR}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from t_land_trade
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	
+	<insert id="insert" parameterType="org.lengyan.crawler.store.model.po.htmlpo.landtransfer.LandTrade">
+		insert into t_land_trade (id, land_cno, land_position,
+		land_area, land_acreage, land_purpose,
+		land_supplymode, land_tradedate, land_tradeurl, land_curl, create_time, update_time
+		)
+		values (#{id,jdbcType=BIGINT}, #{landCno,jdbcType=VARCHAR},
+		#{landPosition,jdbcType=VARCHAR},
+		#{landArea,jdbcType=VARCHAR}, #{landAcreage,jdbcType=VARCHAR}, #{landPurpose,jdbcType=VARCHAR},
+		#{landSupplymode,jdbcType=VARCHAR},#{landTradedate,jdbcType=VARCHAR}, #{landTradeurl,jdbcType=VARCHAR},
+		#{landCurl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	
+	<insert id="insertSelective" parameterType="org.lengyan.crawler.store.model.po.htmlpo.landtransfer.LandTrade">
+		insert into t_land_trade
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="landCno != null">
+				land_cno,
+			</if>
+			<if test="landPosition != null">
+				land_position,
+			</if>
+			<if test="landArea != null">
+				land_area,
+			</if>
+			<if test="landAcreage != null">
+				land_acreage,
+			</if>
+			<if test="landPurpose != null">
+				land_purpose,
+			</if>
+			<if test="landSupplymode != null">
+				land_supplymode,
+			</if>
+			<if test="landTradedate != null">
+				land_tradedate,
+			</if>
+			<if test="landTradeurl != null">
+				land_tradeurl,
+			</if>
+			<if test="landCurl != null">
+				land_curl,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="landCno != null">
+				#{landCno,jdbcType=VARCHAR},
+			</if>
+			<if test="landPosition != null">
+				#{landPosition,jdbcType=VARCHAR},
+			</if>
+			<if test="landArea != null">
+				#{landArea,jdbcType=VARCHAR},
+			</if>
+			<if test="landAcreage != null">
+				#{landAcreage,jdbcType=VARCHAR},
+			</if>
+			<if test="landPurpose != null">
+				#{landPurpose,jdbcType=VARCHAR},
+			</if>
+			<if test="landSupplymode != null">
+				#{landSupplymode,jdbcType=VARCHAR},
+			</if>
+			<if test="landTradedate != null">
+				#{landTradedate,jdbcType=VARCHAR},
+			</if>
+			<if test="landTradeurl != null">
+				#{landTradeurl,jdbcType=VARCHAR},
+			</if>
+			<if test="landCurl != null">
+				#{landCurl,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="org.lengyan.crawler.store.model.po.htmlpo.landtransfer.LandTrade">
+		update t_land_trade
+		<set>
+			<if test="landCno != null">
+				land_cno = #{landCno,jdbcType=VARCHAR},
+			</if>
+			<if test="landPosition != null">
+				land_position = #{landPosition,jdbcType=VARCHAR},
+			</if>
+			<if test="landArea != null">
+				land_area = #{landArea,jdbcType=VARCHAR},
+			</if>
+			<if test="landAcreage != null">
+				land_acreage = #{landAcreage,jdbcType=VARCHAR},
+			</if>
+			<if test="landPurpose != null">
+				land_purpose = #{landPurpose,jdbcType=VARCHAR},
+			</if>
+			<if test="landSupplymode != null">
+				land_supplymode = #{landSupplymode,jdbcType=INTEGER},
+			</if>
+			<if test="landTradedate != null">
+				#{landTradedate,jdbcType=VARCHAR},
+			</if>
+			<if test="landTradeurl != null">
+				#{landTradeurl,jdbcType=VARCHAR},
+			</if>
+			<if test="landCurl != null">
+				#{landCurl,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="org.lengyan.crawler.store.model.po.htmlpo.landtransfer.LandTrade">
+		update t_land_trade
+		set land_cno = #{landCno,jdbcType=VARCHAR},
+		land_position = #{landPosition,jdbcType=VARCHAR},
+		land_area = #{landArea,jdbcType=VARCHAR},
+		land_acreage = #{landAcreage,jdbcType=VARCHAR},
+		land_purpose = #{landPurpose,jdbcType=VARCHAR},
+		land_supplymode = #{landSupplymode,jdbcType=INTEGER},
+		land_tradedate = #{landTradedate,jdbcType=VARCHAR},
+		land_tradeurl = #{landTradeurl,jdbcType=VARCHAR},
+		land_curl = #{landCurl,jdbcType=VARCHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+</mapper>

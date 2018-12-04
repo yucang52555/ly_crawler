@@ -24,4 +24,10 @@ public interface QichaQiyeMapper {
      * @return
      */
     List<QichaQiye> selectAllQiyeList();
+
+    /**
+     * 查询所有企业列表
+     * @return
+     */
+    List<QichaQiye> selectGenNearQiyeList();
 }

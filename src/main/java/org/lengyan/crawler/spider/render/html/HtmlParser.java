@@ -1,11 +1,5 @@
 package org.lengyan.crawler.spider.render.html;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -14,11 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
-import org.lengyan.crawler.annotation.html.Attr;
-import org.lengyan.crawler.annotation.html.Href;
-import org.lengyan.crawler.annotation.html.Html;
-import org.lengyan.crawler.annotation.html.Image;
-import org.lengyan.crawler.annotation.html.Text;
+import org.lengyan.crawler.annotation.html.*;
 import org.lengyan.crawler.request.HttpRequest;
 import org.lengyan.crawler.response.HttpResponse;
 import org.lengyan.crawler.spider.SpiderBean;
@@ -27,6 +17,12 @@ import org.lengyan.crawler.spider.conversion.Conversion;
 import org.lengyan.crawler.spider.render.Render;
 import org.lengyan.crawler.spider.render.RenderContext;
 import org.lengyan.crawler.spider.render.RenderType;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HtmlParser {
 
@@ -139,7 +135,8 @@ public class HtmlParser {
 	}
 
 	public Elements $(String selector) {
-		Elements elements = document.select(".FRAME_login");
+//		Elements elements = document.select(".FRAME_login");
+		Elements elements = document.select(selector);
 		if (SpiderThreadLocal.get().getEngine().isDebug()) {
 			if (!selector.equalsIgnoreCase("script")) {
 				// log.debug("["+selector+"]--->["+elements+"]");

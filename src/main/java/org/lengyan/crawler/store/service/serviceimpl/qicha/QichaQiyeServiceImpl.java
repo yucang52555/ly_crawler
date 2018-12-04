@@ -53,4 +53,9 @@ public class QichaQiyeServiceImpl implements IQichaQiyeService{
 
     }
 
+    @Override
+    public List<QichaQiye> selectGenNearQiyeList() {
+        return qichaQiyeMapper.selectGenNearQiyeList();
+    }
+
 }
