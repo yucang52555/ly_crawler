@@ -14,7 +14,7 @@
      		http://www.springframework.org/schema/task/spring-task-3.0.xsd" >
 	
 	<context:component-scan base-package="org.lengyan.crawler.store.service"/>
-	<context:component-scan base-package="org.lengyan.crawler.scheduler.task" />
+	<context:component-scan base-package="org.lengyan.crawler.scheduler" />
 	
 	<task:executor id="executor" pool-size="5" />
 	<task:scheduler id="scheduler" pool-size="10" />
