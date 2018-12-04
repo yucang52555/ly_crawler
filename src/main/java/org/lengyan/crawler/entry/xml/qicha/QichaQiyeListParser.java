@@ -60,7 +60,8 @@ public class QichaQiyeListParser implements XmlBean {
                                 qichaQiyeService.saveQichaQiye(qichaQiye);
                             }
                             //文件迁移到备份文件夹
-                            FileUtils.delFile(file.getAbsolutePath());
+//                            FileUtils.delFile(file.getAbsolutePath());
+                            FileUtils.moveFile(file.getAbsolutePath(), backupFile + file.getName());
                         }else {
                             //文件迁移到备份文件夹
                             FileUtils.moveFile(file.getAbsolutePath(), errorFile + file.getName());
