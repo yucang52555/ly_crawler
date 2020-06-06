@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lengyan.crawler.store.dao.juheapi.JuheapiTohisMapper">
+	<resultMap id="BaseResultMap" type="org.lengyan.crawler.store.model.po.apipo.juhe.JuheapiTohis">
+		<id column="uid" property="uid" jdbcType="BIGINT" />
+		<result column="id" property="id" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="pic" property="pic" jdbcType="VARCHAR" />
+		<result column="year" property="year" jdbcType="INTEGER" />
+		<result column="month" property="month" jdbcType="INTEGER" />
+		<result column="day" property="day" jdbcType="INTEGER" />
+		<result column="des" property="des" jdbcType="VARCHAR" />
+		<result column="lunar" property="lunar" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		uid, id, title, pic, year, month, day, des, lunar
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from T_JUHEAPI_TOHIS
+		where uid = #{uid,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from T_JUHEAPI_TOHIS
+		where uid = #{uid,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="org.lengyan.crawler.store.model.po.apipo.juhe.JuheapiTohis">
+		insert into T_JUHEAPI_TOHIS (uid, id, title,
+		pic, year, month, day,
+		des, lunar)
+		values (#{uid,jdbcType=BIGINT}, #{id,jdbcType=VARCHAR},
+		#{title,jdbcType=VARCHAR},
+		#{pic,jdbcType=VARCHAR}, #{year,jdbcType=INTEGER}, #{month,jdbcType=INTEGER},
+		#{day,jdbcType=INTEGER},
+		#{des,jdbcType=VARCHAR}, #{lunar,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.lengyan.crawler.store.model.po.apipo.juhe.JuheapiTohis">
+		insert into T_JUHEAPI_TOHIS
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="uid != null">
+				uid,
+			</if>
+			<if test="id != null">
+				id,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="pic != null">
+				pic,
+			</if>
+			<if test="year != null">
+				year,
+			</if>
+			<if test="month != null">
+				month,
+			</if>
+			<if test="day != null">
+				day,
+			</if>
+			<if test="des != null">
+				des,
+			</if>
+			<if test="lunar != null">
+				lunar,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="uid != null">
+				#{uid,jdbcType=BIGINT},
+			</if>
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="pic != null">
+				#{pic,jdbcType=VARCHAR},
+			</if>
+			<if test="year != null">
+				#{year,jdbcType=INTEGER},
+			</if>
+			<if test="month != null">
+				#{month,jdbcType=INTEGER},
+			</if>
+			<if test="day != null">
+				#{day,jdbcType=INTEGER},
+			</if>
+			<if test="des != null">
+				#{des,jdbcType=VARCHAR},
+			</if>
+			<if test="lunar != null">
+				#{lunar,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.lengyan.crawler.store.model.po.apipo.juhe.JuheapiTohis">
+		update T_JUHEAPI_TOHIS
+		<set>
+			<if test="id != null">
+				id = #{id,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="pic != null">
+				pic = #{pic,jdbcType=VARCHAR},
+			</if>
+			<if test="year != null">
+				year = #{year,jdbcType=INTEGER},
+			</if>
+			<if test="month != null">
+				month = #{month,jdbcType=INTEGER},
+			</if>
+			<if test="day != null">
+				day = #{day,jdbcType=INTEGER},
+			</if>
+			<if test="des != null">
+				des = #{des,jdbcType=VARCHAR},
+			</if>
+			<if test="lunar != null">
+				lunar = #{lunar,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where uid = #{uid,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.lengyan.crawler.store.model.po.apipo.juhe.JuheapiTohis">
+		update T_JUHEAPI_TOHIS
+		set id = #{id,jdbcType=VARCHAR},
+		title = #{title,jdbcType=VARCHAR},
+		pic = #{pic,jdbcType=VARCHAR},
+		year = #{year,jdbcType=INTEGER},
+		month = #{month,jdbcType=INTEGER},
+		day = #{day,jdbcType=INTEGER},
+		des = #{des,jdbcType=VARCHAR},
+		lunar = #{lunar,jdbcType=VARCHAR}
+		where uid = #{uid,jdbcType=BIGINT}
+	</update>
+</mapper>

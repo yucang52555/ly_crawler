@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lengyan.crawler.store.dao.bsbdj.BsbdjUserMapper" >
+  <resultMap id="BaseResultMap" type="org.lengyan.crawler.store.model.po.apipo.bsbdj.BsbdjUser" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="id_grade" property="idGrade" jdbcType="INTEGER" />
+    <result column="friend_count" property="friendCount" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="id_type" property="idType" jdbcType="VARCHAR" />
+    <result column="id_verified" property="idVerified" jdbcType="VARCHAR" />
+    <result column="screenName" property="screenName" jdbcType="VARCHAR" />
+    <result column="avatarUrl" property="avatarUrl" jdbcType="VARCHAR" />
+    <result column="userName" property="userName" jdbcType="VARCHAR" />
+    <result column="isVip" property="isVip" jdbcType="VARCHAR" />
+    <result column="likeCount" property="likeCount" jdbcType="VARCHAR" />
+    <result column="biography" property="biography" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="fansCount" property="fansCount" jdbcType="INTEGER" />
+    <result column="postCount" property="postCount" jdbcType="INTEGER" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="idExpValue" property="idExpValue" jdbcType="VARCHAR" />
+    <result column="viewCount" property="viewCount" jdbcType="INTEGER" />
+    <result column="idVerifiedInfo" property="idVerifiedInfo" jdbcType="VARCHAR" />
+    <result column="followCount" property="followCount" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, id_grade, friend_count, url, id_type, id_verified, screenName, avatarUrl, userName, 
+    isVip, likeCount, biography, gender, fansCount, postCount, location, idExpValue, 
+    viewCount, idVerifiedInfo, followCount
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BSBDJ_USER
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from T_BSBDJ_USER
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="org.lengyan.crawler.store.model.po.apipo.bsbdj.BsbdjUser" >
+    insert into T_BSBDJ_USER (id, id_grade, friend_count, 
+      url, id_type, id_verified, 
+      screenName, avatarUrl, userName, 
+      isVip, likeCount, biography, 
+      gender, fansCount, postCount, 
+      location, idExpValue, viewCount, 
+      idVerifiedInfo, followCount)
+    values (#{id,jdbcType=BIGINT}, #{idGrade,jdbcType=INTEGER}, #{friendCount,jdbcType=INTEGER}, 
+      #{url,jdbcType=VARCHAR}, #{idType,jdbcType=VARCHAR}, #{idVerified,jdbcType=VARCHAR}, 
+      #{screenName,jdbcType=VARCHAR}, #{avatarUrl,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{isVip,jdbcType=VARCHAR}, #{likeCount,jdbcType=VARCHAR}, #{biography,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{fansCount,jdbcType=INTEGER}, #{postCount,jdbcType=INTEGER}, 
+      #{location,jdbcType=VARCHAR}, #{idExpValue,jdbcType=VARCHAR}, #{viewCount,jdbcType=INTEGER}, 
+      #{idVerifiedInfo,jdbcType=VARCHAR}, #{followCount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lengyan.crawler.store.model.po.apipo.bsbdj.BsbdjUser" >
+    insert into T_BSBDJ_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="idGrade != null" >
+        id_grade,
+      </if>
+      <if test="friendCount != null" >
+        friend_count,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="idType != null" >
+        id_type,
+      </if>
+      <if test="idVerified != null" >
+        id_verified,
+      </if>
+      <if test="screenName != null" >
+        screenName,
+      </if>
+      <if test="avatarUrl != null" >
+        avatarUrl,
+      </if>
+      <if test="userName != null" >
+        userName,
+      </if>
+      <if test="isVip != null" >
+        isVip,
+      </if>
+      <if test="likeCount != null" >
+        likeCount,
+      </if>
+      <if test="biography != null" >
+        biography,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="fansCount != null" >
+        fansCount,
+      </if>
+      <if test="postCount != null" >
+        postCount,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="idExpValue != null" >
+        idExpValue,
+      </if>
+      <if test="viewCount != null" >
+        viewCount,
+      </if>
+      <if test="idVerifiedInfo != null" >
+        idVerifiedInfo,
+      </if>
+      <if test="followCount != null" >
+        followCount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="idGrade != null" >
+        #{idGrade,jdbcType=INTEGER},
+      </if>
+      <if test="friendCount != null" >
+        #{friendCount,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null" >
+        #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idVerified != null" >
+        #{idVerified,jdbcType=VARCHAR},
+      </if>
+      <if test="screenName != null" >
+        #{screenName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null" >
+        #{avatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="isVip != null" >
+        #{isVip,jdbcType=VARCHAR},
+      </if>
+      <if test="likeCount != null" >
+        #{likeCount,jdbcType=VARCHAR},
+      </if>
+      <if test="biography != null" >
+        #{biography,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="fansCount != null" >
+        #{fansCount,jdbcType=INTEGER},
+      </if>
+      <if test="postCount != null" >
+        #{postCount,jdbcType=INTEGER},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="idExpValue != null" >
+        #{idExpValue,jdbcType=VARCHAR},
+      </if>
+      <if test="viewCount != null" >
+        #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="idVerifiedInfo != null" >
+        #{idVerifiedInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="followCount != null" >
+        #{followCount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lengyan.crawler.store.model.po.apipo.bsbdj.BsbdjUser" >
+    update T_BSBDJ_USER
+    <set >
+      <if test="idGrade != null" >
+        id_grade = #{idGrade,jdbcType=INTEGER},
+      </if>
+      <if test="friendCount != null" >
+        friend_count = #{friendCount,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null" >
+        id_type = #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idVerified != null" >
+        id_verified = #{idVerified,jdbcType=VARCHAR},
+      </if>
+      <if test="screenName != null" >
+        screenName = #{screenName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null" >
+        avatarUrl = #{avatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        userName = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="isVip != null" >
+        isVip = #{isVip,jdbcType=VARCHAR},
+      </if>
+      <if test="likeCount != null" >
+        likeCount = #{likeCount,jdbcType=VARCHAR},
+      </if>
+      <if test="biography != null" >
+        biography = #{biography,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="fansCount != null" >
+        fansCount = #{fansCount,jdbcType=INTEGER},
+      </if>
+      <if test="postCount != null" >
+        postCount = #{postCount,jdbcType=INTEGER},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="idExpValue != null" >
+        idExpValue = #{idExpValue,jdbcType=VARCHAR},
+      </if>
+      <if test="viewCount != null" >
+        viewCount = #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="idVerifiedInfo != null" >
+        idVerifiedInfo = #{idVerifiedInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="followCount != null" >
+        followCount = #{followCount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lengyan.crawler.store.model.po.apipo.bsbdj.BsbdjUser" >
+    update T_BSBDJ_USER
+    set id_grade = #{idGrade,jdbcType=INTEGER},
+      friend_count = #{friendCount,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      id_type = #{idType,jdbcType=VARCHAR},
+      id_verified = #{idVerified,jdbcType=VARCHAR},
+      screenName = #{screenName,jdbcType=VARCHAR},
+      avatarUrl = #{avatarUrl,jdbcType=VARCHAR},
+      userName = #{userName,jdbcType=VARCHAR},
+      isVip = #{isVip,jdbcType=VARCHAR},
+      likeCount = #{likeCount,jdbcType=VARCHAR},
+      biography = #{biography,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      fansCount = #{fansCount,jdbcType=INTEGER},
+      postCount = #{postCount,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR},
+      idExpValue = #{idExpValue,jdbcType=VARCHAR},
+      viewCount = #{viewCount,jdbcType=INTEGER},
+      idVerifiedInfo = #{idVerifiedInfo,jdbcType=VARCHAR},
+      followCount = #{followCount,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

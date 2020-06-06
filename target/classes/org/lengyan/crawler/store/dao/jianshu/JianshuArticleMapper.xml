@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lengyan.crawler.store.dao.jianshu.JianshuArticleMapper">
+	<resultMap id="BaseResultMap"
+		type="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle">
+		<result column="id" property="id" jdbcType="BIGINT" />
+		<result column="headimg_url" property="headimgUrl" jdbcType="VARCHAR" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="user_url" property="userUrl" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="article_url" property="articleUrl" jdbcType="VARCHAR" />
+		<result column="abstract_content" property="abstractContent"
+			jdbcType="VARCHAR" />
+		<result column="article_create_time" property="articleCreateTime"
+			jdbcType="TIMESTAMP" />
+		<result column="read_count" property="readCount" jdbcType="INTEGER" />
+		<result column="comment_count" property="commentCount"
+			jdbcType="INTEGER" />
+		<result column="approve_count" property="approveCount"
+			jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs"
+		type="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle"
+		extends="BaseResultMap">
+		<result column="content" property="content" jdbcType="LONGVARCHAR" />
+	</resultMap>
+	<sql id="Blob_Column_List">
+		content
+	</sql>
+	<insert id="insert"
+		parameterType="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle">
+		insert into T_JIANSHU_ARTICLE (id, headimg_url, user_name,
+		user_url, title, article_url,
+		abstract_content, article_create_time, read_count,
+		comment_count, approve_count, create_time,
+		update_time, content)
+		values (#{id,jdbcType=BIGINT}, #{headimgUrl,jdbcType=VARCHAR},
+		#{userName,jdbcType=VARCHAR},
+		#{userUrl,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{articleUrl,jdbcType=VARCHAR},
+		#{abstractContent,jdbcType=VARCHAR},
+		#{articleCreateTime,jdbcType=TIMESTAMP},
+		#{readCount,jdbcType=INTEGER},
+		#{commentCount,jdbcType=INTEGER}, #{approveCount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
+	</insert>
+	<insert id="insertSelective"
+		parameterType="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle">
+		insert into T_JIANSHU_ARTICLE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="headimgUrl != null">
+				headimg_url,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="userUrl != null">
+				user_url,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="articleUrl != null">
+				article_url,
+			</if>
+			<if test="abstractContent != null">
+				abstract_content,
+			</if>
+			<if test="articleCreateTime != null">
+				article_create_time,
+			</if>
+			<if test="readCount != null">
+				read_count,
+			</if>
+			<if test="commentCount != null">
+				comment_count,
+			</if>
+			<if test="approveCount != null">
+				approve_count,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="content != null">
+				content,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="headimgUrl != null">
+				#{headimgUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userUrl != null">
+				#{userUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="articleUrl != null">
+				#{articleUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="abstractContent != null">
+				#{abstractContent,jdbcType=VARCHAR},
+			</if>
+			<if test="articleCreateTime != null">
+				#{articleCreateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="readCount != null">
+				#{readCount,jdbcType=INTEGER},
+			</if>
+			<if test="commentCount != null">
+				#{commentCount,jdbcType=INTEGER},
+			</if>
+			<if test="approveCount != null">
+				#{approveCount,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="content != null">
+				#{content,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective"
+		parameterType="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle">
+		update T_JIANSHU_ARTICLE
+		<set>
+			<if test="headimgUrl != null">
+				headimg_url = #{headimgUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				user_name = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userUrl != null">
+				user_url = #{userUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="articleUrl != null">
+				article_url = #{articleUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="abstractContent != null">
+				abstract_content = #{abstractContent,jdbcType=VARCHAR},
+			</if>
+			<if test="articleCreateTime != null">
+				article_create_time = #{articleCreateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="readCount != null">
+				read_count = #{readCount,jdbcType=INTEGER},
+			</if>
+			<if test="commentCount != null">
+				comment_count = #{commentCount,jdbcType=INTEGER},
+			</if>
+			<if test="approveCount != null">
+				approve_count = #{approveCount,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="content != null">
+				content = #{content,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuArticle">
+		update T_JIANSHU_ARTICLE
+		set
+		headimg_url = #{headimgUrl,jdbcType=VARCHAR},
+		user_name = #{userName,jdbcType=VARCHAR},
+		user_url = #{userUrl,jdbcType=VARCHAR},
+		title = #{title,jdbcType=VARCHAR},
+		article_url = #{articleUrl,jdbcType=VARCHAR},
+		abstract_content = #{abstractContent,jdbcType=VARCHAR},
+		article_create_time = #{articleCreateTime,jdbcType=TIMESTAMP},
+		read_count = #{readCount,jdbcType=INTEGER},
+		comment_count = #{commentCount,jdbcType=INTEGER},
+		approve_count = #{approveCount,jdbcType=INTEGER},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		content = #{content,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectArticleByUrl" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		id, headimg_url headimgUrl, user_name userName,
+		user_url userUrl, title, article_url articleUrl,
+		abstract_content abstractContent, article_create_time articleCreateTime, read_count
+		readCount,
+		comment_count commentCount, approve_count approveCount, create_time createTime,
+		update_time updateTime, content
+		from
+		T_JIANSHU_ARTICLE
+		where
+		article_url = #{articleUrl,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectAllUserList" resultMap="BaseResultMap">
+		select
+		id, headimg_url headimgUrl, user_name userName,
+		user_url userUrl, title, article_url articleUrl,
+		abstract_content abstractContent, article_create_time articleCreateTime, read_count
+		readCount,
+		comment_count commentCount, approve_count approveCount, create_time createTime,
+		update_time updateTime, content
+		from
+		T_JIANSHU_ARTICLE
+		where
+		1 = 1
+		group by user_url
+	</select>
+</mapper>

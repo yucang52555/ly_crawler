@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lengyan.crawler.store.dao.jianshu.JianshuUserMapper" >
+  <resultMap id="BaseResultMap" type="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuUser" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="main_url" property="mainUrl" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="user_profile" property="userProfile" jdbcType="VARCHAR" />
+    <result column="follow_count" property="followCount" jdbcType="INTEGER" />
+    <result column="fans_count" property="fansCount" jdbcType="INTEGER" />
+    <result column="article_count" property="articleCount" jdbcType="INTEGER" />
+    <result column="word_count" property="wordCount" jdbcType="INTEGER" />
+    <result column="receive_like_count" property="receiveLikeCount" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, main_url, user_name, gender, user_profile, follow_count, fans_count, article_count, 
+    word_count, receive_like_count, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_jianshu_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_jianshu_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuUser" >
+    insert into t_jianshu_user (id, main_url, user_name, 
+      gender, user_profile, follow_count, 
+      fans_count, article_count, word_count, 
+      receive_like_count, create_time, update_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{mainUrl,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{userProfile,jdbcType=VARCHAR}, #{followCount,jdbcType=INTEGER}, 
+      #{fansCount,jdbcType=INTEGER}, #{articleCount,jdbcType=INTEGER}, #{wordCount,jdbcType=INTEGER}, 
+      #{receiveLikeCount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuUser" >
+    insert into t_jianshu_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="mainUrl != null" >
+        main_url,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="userProfile != null" >
+        user_profile,
+      </if>
+      <if test="followCount != null" >
+        follow_count,
+      </if>
+      <if test="fansCount != null" >
+        fans_count,
+      </if>
+      <if test="articleCount != null" >
+        article_count,
+      </if>
+      <if test="wordCount != null" >
+        word_count,
+      </if>
+      <if test="receiveLikeCount != null" >
+        receive_like_count,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mainUrl != null" >
+        #{mainUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="userProfile != null" >
+        #{userProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="followCount != null" >
+        #{followCount,jdbcType=INTEGER},
+      </if>
+      <if test="fansCount != null" >
+        #{fansCount,jdbcType=INTEGER},
+      </if>
+      <if test="articleCount != null" >
+        #{articleCount,jdbcType=INTEGER},
+      </if>
+      <if test="wordCount != null" >
+        #{wordCount,jdbcType=INTEGER},
+      </if>
+      <if test="receiveLikeCount != null" >
+        #{receiveLikeCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuUser" >
+    update t_jianshu_user
+    <set >
+      <if test="mainUrl != null" >
+        main_url = #{mainUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="userProfile != null" >
+        user_profile = #{userProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="followCount != null" >
+        follow_count = #{followCount,jdbcType=INTEGER},
+      </if>
+      <if test="fansCount != null" >
+        fans_count = #{fansCount,jdbcType=INTEGER},
+      </if>
+      <if test="articleCount != null" >
+        article_count = #{articleCount,jdbcType=INTEGER},
+      </if>
+      <if test="wordCount != null" >
+        word_count = #{wordCount,jdbcType=INTEGER},
+      </if>
+      <if test="receiveLikeCount != null" >
+        receive_like_count = #{receiveLikeCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lengyan.crawler.store.model.po.xmlpo.jianshu.JianshuUser" >
+    update t_jianshu_user
+    set main_url = #{mainUrl,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      user_profile = #{userProfile,jdbcType=VARCHAR},
+      follow_count = #{followCount,jdbcType=INTEGER},
+      fans_count = #{fansCount,jdbcType=INTEGER},
+      article_count = #{articleCount,jdbcType=INTEGER},
+      word_count = #{wordCount,jdbcType=INTEGER},
+      receive_like_count = #{receiveLikeCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
